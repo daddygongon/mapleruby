@@ -1,0 +1,5 @@
+interface(quiet=true);
+writeto("./result");
+1+1;
+writeto(terminal);
+interface(quiet=false);
