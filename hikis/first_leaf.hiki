@@ -14,15 +14,18 @@ Maplerubyの作り方
 まずはmaple利用で考えているおおまかな流れを書いておきます．
 
 specを見てください．
+
 <<< ruby
   it 'returns 1+1=2' do
     p res = Mapleruby.new('1+1').exec
     expect(2).to eq(res)
   end
 >>>
+
 というような使い方を想定しています．
 
 このコードは
+
 <<< ruby
 class Mapleruby
   # Your code goes here...
@@ -46,6 +49,7 @@ EOS
   end
 end
 >>>
+
 で実現されています．
 
 動作の解説は，
