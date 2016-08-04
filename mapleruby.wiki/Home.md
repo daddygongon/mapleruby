@@ -24,6 +24,30 @@ $ gem install mapleruby
 
 ## Usage
 
+Maplerubyはgem libraryで提供されます．
+
+ただし，~/.mapleruby_rcにいくつかの環境設定を保存しています．現在のところ，
+```tcsh
+bob% cat ~/.mapleruby_rc 
+---
+:MAPLE_PATH: "/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"
+```
+だけです．
+
+この環境構築などを担うCUIはexe/maplerubyに用意されています．
+構造化データの簡易表現が可能なyamlを使ってデータの読み書きをしています．使い方は
+```tcsh
+bob% bundle exec exe/mapleruby 
+Mapleruby is basically a lib used in ruby code,
+but command 'mapleruby' provides some helping utils.
+Usage: mapleruby [options] FILE
+    -v, --version                    show prgoram versions.
+    -s, --show                       show mapleruby environment.
+    -i, --init                       init mapleruby environment.
+```
+のとおりです．
+
+
 libraryで読んで，
 ```ruby
 require 'mapleruby'
@@ -44,6 +68,15 @@ Maple.new('lcm',a,b)
 ```
 かな．．．
 
+結局，
+```ruby
+require 'mapleruby'
+
+Maple.new('1+1').exe
+Maple.new('nextprime',a).exe
+Maple.new('lcm',a,b).exe
+```
+で落ち着きそう．
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

@@ -107,6 +107,11 @@
   <h2>Constant Summary</h2>
   <dl class="constants">
     
+      <dt id="DATA_FILE-constant" class="">DATA_FILE =
+        
+      </dt>
+      <dd><pre class="code"><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HOME</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.mapleruby_rc</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></pre></dd>
+    
       <dt id="VERSION-constant" class="">VERSION =
         
       </dt>
@@ -132,6 +137,28 @@
   <span class="summary_signature">
     
       <a href="#exec-instance_method" title="#exec (instance method)">#<strong>exec</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_env-instance_method" title="#get_env (instance method)">#<strong>get_env</strong>  &#x21d2; Object </a>
     
 
     
@@ -208,15 +235,19 @@
       <pre class="lines">
 
 
-5
-6
-7</pre>
+8
+9
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mapleruby.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/mapleruby.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_maple_code'>maple_code</span><span class='rparen'>)</span>
   <span class='ivar'>@maple_code</span> <span class='op'>=</span> <span class='id identifier rubyid_maple_code'>maple_code</span>
+  <span class='ivar'>@src</span> <span class='op'>=</span> <span class='id identifier rubyid_get_env'>get_env</span>
+  <span class='ivar'>@maple_path</span><span class='op'>=</span><span class='ivar'>@src</span><span class='lbracket'>[</span><span class='symbol'>:MAPLE_PATH</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -245,11 +276,6 @@
       <pre class="lines">
 
 
-8
-9
-10
-11
-12
 13
 14
 15
@@ -259,10 +285,15 @@
 19
 20
 21
-22</pre>
+22
+23
+24
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mapleruby.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/mapleruby.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_exec'>exec</span>
   <span class='id identifier rubyid_code0'>code0</span><span class='op'>=</span><span class='heredoc_beg'>&lt;&lt;EOS</span>
@@ -273,11 +304,57 @@ writeto(terminal);
 interface(quiet=false);
 </span><span class='heredoc_end'>EOS
 </span>  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tmp.mw</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='id identifier rubyid_code0'>code0</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_command'>command</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/Library/Frameworks/Maple.framework/Versions/Current/bin/maple tmp.mw</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_command'>command</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@maple_path</span><span class='embexpr_end'>}</span><span class='tstring_content'> tmp.mw</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_status'>status</span><span class='comma'>,</span><span class='id identifier rubyid_stdout'>stdout</span><span class='comma'>,</span><span class='id identifier rubyid_stderr'>stderr</span><span class='op'>=</span><span class='id identifier rubyid_systemu'>systemu</span> <span class='id identifier rubyid_command'>command</span>
   <span class='id identifier rubyid_status'>status</span><span class='comma'>,</span><span class='id identifier rubyid_stdout'>stdout</span><span class='comma'>,</span><span class='id identifier rubyid_stderr'>stderr</span><span class='op'>=</span><span class='id identifier rubyid_systemu'>systemu</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cat result.txt</span><span class='tstring_end'>&#39;</span></span>
   <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_result'>result</span><span class='op'>=</span><span class='id identifier rubyid_stdout'>stdout</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_env-instance_method">
+  
+    #<strong>get_env</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mapleruby.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_env'>get_env</span>
+  <span class='kw'>begin</span> 
+    <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='const'>DATA_FILE</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>r</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_evar'>evar</span>
+    <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_evar'>evar</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>no resource file for mapleruby.\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@src</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+  <span class='id identifier rubyid_p'>p</span> <span class='ivar'>@src</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -289,7 +366,7 @@ interface(quiet=false);
 </div>
 
       <div id="footer">
-  Generated on Thu Aug  4 13:11:45 2016 by
+  Generated on Thu Aug  4 15:39:15 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.5 (ruby-2.2.2).
 </div>

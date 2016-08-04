@@ -1,9 +1,14 @@
 require "mapleruby/version"
 require 'systemu'
+require 'yaml'
+
 class Mapleruby
+  DATA_FILE=File.join(ENV['HOME'],'.mapleruby_rc')
   # Your code goes here...
   def initialize(maple_code)
     @maple_code = maple_code
+    @src = get_env
+    @maple_path=@src[:MAPLE_PATH]
   end
   def exec
     code0=<<EOS
@@ -14,10 +19,23 @@ writeto(terminal);
 interface(quiet=false);
 EOS
     File.write('tmp.mw',code0)
-    command="/Library/Frameworks/Maple.framework/Versions/Current/bin/maple tmp.mw"
+    command="#{@maple_path} tmp.mw"
     status,stdout,stderr=systemu command
     status,stdout,stderr=systemu 'cat result.txt'
     p result=stdout.to_i
     return result
   end
+
+  def get_env
+    begin 
+      file = File.open(DATA_FILE,'r')
+    rescue => evar
+      p evar
+      print "no resource file for mapleruby.\n"
+    end
+    @src = YAML.load(file.read)
+    file.close
+    p @src
+  end
+
 end
