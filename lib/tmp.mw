@@ -1,0 +1,5 @@
+interface(quiet=true);
+writeto("./result.txt");
+nextprime(11);
+writeto(terminal);
+interface(quiet=false);

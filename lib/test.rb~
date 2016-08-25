@@ -1,1 +1,4 @@
-require "./mapleruby.rb"
+require 'mapleruby'
+
+Mapleruby.new('1+1').exec
+Mapleruby.new('nextprime',6).exec

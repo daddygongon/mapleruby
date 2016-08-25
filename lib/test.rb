@@ -1,3 +1,4 @@
 require 'mapleruby'
 
-Maple.new('1+1').exe
+Mapleruby.new('1+1').exec
+Mapleruby.new('nextprime(11)').exec
