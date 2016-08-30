@@ -1,4 +1,13 @@
 require 'mapleruby'
 
 Mapleruby.new('1+1').exec
-Mapleruby.new('nextprime',6).exec
+
+class My_Maple
+  def nextprime(a)
+    p a = a.to_i
+    Mapleruby.new("nextprime(#{a})").exec
+  end
+end
+
+a = 1.0e10
+My_Maple::nextprime(a)
