@@ -2,6 +2,13 @@ require "mapleruby/version"
 require 'systemu'
 require 'yaml'
 
+class My_Maple
+  def nextprime(a)
+    p a = a.to_i
+    Mapleruby.new("nextprime(#{a})").exec
+  end
+end
+
 class Mapleruby
   DATA_FILE=File.join(ENV['HOME'],'.mapleruby_rc')
   # Your code goes here...
@@ -39,3 +46,8 @@ EOS
   end
 
 end
+
+
+
+
+

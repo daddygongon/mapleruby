@@ -1,0 +1,10 @@
+require 'mapleruby'
+
+Mapleruby.new('1+1').exec
+
+#p a = 1.0e10
+#RMaple.new.nextprime(a)
+
+p a = 5
+p b = 10
+RMaple.new.lcm(a,b)

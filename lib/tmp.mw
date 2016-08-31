@@ -1,5 +1,5 @@
 interface(quiet=true);
 writeto("./result.txt");
-nextprime(11);
+1+1;
 writeto(terminal);
 interface(quiet=false);
