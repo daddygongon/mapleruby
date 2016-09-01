@@ -1,5 +1,5 @@
 interface(quiet=true);
 writeto("./result.txt");
-1+1;
+ifactor(42);
 writeto(terminal);
 interface(quiet=false);

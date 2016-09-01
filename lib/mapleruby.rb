@@ -4,13 +4,35 @@ require 'yaml'
 
 class RMaple
   def nextprime(a)
-    p a = a.to_i
+    a = a.to_i
     Mapleruby.new("nextprime(#{a})").exec
   end
+  def isprime(a)
+    a = a.to_i
+    Mapleruby.new("isprime(#{a})").exec
+  end
   def lcm(a,b)
-    p a = a.to_i
-    p b = b.to_i
-    Mapleruby.new('lcm(#{a},#{b})').exec
+    a = a.to_i
+    b = b.to_i
+    Mapleruby.new("lcm(#{a},#{b})").exec
+  end
+  def gcd(a,b)
+    a = a.to_i
+    b = b.to_i
+    Mapleruby.new("gcd(#{a},#{b})").exec
+  end
+  def rand(a)
+    a = a.to_i
+    Mapleruby.new("rand(#{a})()").exec
+  end
+  def mod(a,b)
+    a = a.to_i
+    b = b.to_i
+    Mapleruby.new("modp(#{a},#{b})").exec
+  end
+  def ifactor(a)
+    a = a.to_i
+    Mapleruby.new("ifactor(#{a})").exec
   end
 end
 
@@ -35,6 +57,8 @@ EOS
     status,stdout,stderr=systemu command
     status,stdout,stderr=systemu 'cat result.txt'
     p result=stdout.to_i
+   #result = stdout
+   #print(result)
     return result
   end
 
