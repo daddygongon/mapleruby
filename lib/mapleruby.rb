@@ -5,34 +5,34 @@ require 'yaml'
 class RMaple
   def nextprime(a)
     a = a.to_i
-    Mapleruby.new("nextprime(#{a})").exec
+    p Mapleruby.new("nextprime(#{a})").exec_i
   end
   def isprime(a)
     a = a.to_i
-    Mapleruby.new("isprime(#{a})").exec
+    p Mapleruby.new("isprime(#{a})").exec_b
   end
   def lcm(a,b)
     a = a.to_i
     b = b.to_i
-    Mapleruby.new("lcm(#{a},#{b})").exec
+    p Mapleruby.new("lcm(#{a},#{b})").exec_i
   end
   def gcd(a,b)
     a = a.to_i
     b = b.to_i
-    Mapleruby.new("gcd(#{a},#{b})").exec
+    p Mapleruby.new("gcd(#{a},#{b})").exec_i
   end
   def rand(a)
     a = a.to_i
-    Mapleruby.new("rand(#{a})()").exec
+    p Mapleruby.new("rand(#{a})()").exec_i
   end
   def mod(a,b)
     a = a.to_i
     b = b.to_i
-    Mapleruby.new("modp(#{a},#{b})").exec
+    p Mapleruby.new("modp(#{a},#{b})").exec_i
   end
   def ifactor(a)
     a = a.to_i
-    Mapleruby.new("ifactor(#{a})").exec
+    print(Mapleruby.new("ifactor(#{a})").exec_s)
   end
 end
 
@@ -43,6 +43,19 @@ class Mapleruby
     @maple_code = maple_code
     @src = get_env
     @maple_path=@src[:MAPLE_PATH]
+  end
+  def exec_i
+    result = exec
+    return result.to_i
+  end
+  def exec_b
+    result = exec
+    return false if result.match(/false/)
+    return true if result.match(/true/)
+  end
+ def exec_s
+    result = exec
+    return result
   end
   def exec
     code0=<<EOS
@@ -56,10 +69,9 @@ EOS
     command="#{@maple_path} tmp.mw"
     status,stdout,stderr=systemu command
     status,stdout,stderr=systemu 'cat result.txt'
-    p result=stdout.to_i
-   #result = stdout
-   #print(result)
-    return result
+   # result=stdout
+   # print(result)
+    return stdout
   end
 
   def get_env

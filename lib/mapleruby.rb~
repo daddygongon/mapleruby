@@ -56,8 +56,9 @@ EOS
     command="#{@maple_path} tmp.mw"
     status,stdout,stderr=systemu command
     status,stdout,stderr=systemu 'cat result.txt'
-    p result=stdout.to_i
-   # print(result)
+   # p result=stdout.to_i
+    result = stdout
+    print(result)
     return result
   end
 

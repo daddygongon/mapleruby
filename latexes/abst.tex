@@ -35,21 +35,16 @@ Javaで作られたguiを使って実行する．
 それとは別にcommand lineで実行される計算エンジン部が用意されている．
 このエンジンに直接働きかけるcuiを操作する．
 
-rubyのsystemuを使って，出力を得るようにしている．
-
+rubyのsystemuを使って，出力を得るようにしており，
 Ruby上で要求コードを受け取った後，そのコードをtmp.mwに書き込んだ後それをMapleで実行し，
-結果をテキストファイルで受けとる．
-Mapleの関数ごとにそれに応じた関数をRuby上に作り，うまく動作するようにする．
+結果をテキストファイルで受けとることで出力を得る．
 
 \section{進捗状況}
 \subsection{maple関数の類型化}
 一例として以下の様なMaple関数のrubyでの使用を想定して変換プログラムを作成している．
 これらはRSA暗号化を実行するrubyプログラムを意図している．
 
-Mapleの関数として，この暗号化計算において用いるに関しては表1に記したものを準備したが，
-rand関数がうまく動いてくれずに作業が止まっている状態である．
-また，出力がboonlean型であるisprime関数と出力に()が含まれるifactor関数がターミナル上ではうまく見れない状態である．
-
+Mapleの関数として，この暗号化計算において用いる関数については表1に記したものを準備した．
 \begin{table}[htbp]\begin{center}
 \caption{maplerubyで想定している関数の役割と入出力．}
 \begin{tabular}{lllll}
@@ -64,23 +59,28 @@ ifactor  &素因数分解  &int  &string?(注1)  \\
 mod  &剰余  &int,int  &int  \\
 \hline
 \end{tabular}
-注1:()に数値が囲われた状態で複数個出力される．
+注1:()に数値が囲われた状態で出力される．
 \label{default}
 \end{center}
 \end{table}
 %for inserting separate lines, use \hline, \cline{2-3} etc.
 
 \subsection{出力の切り替え}
-wrapperを使う．execを\verb|exec_i|から呼び出す．$exec_b$から．．．
+Mapleから受け取ったままの出力は，答えの前にスペースがたくさん入っていることや，
+出力がString型であることから計算に支障をきたすため，
+関数ごとに正しく出力できるようにwrapperを使う．
+例えば，int型で出力が欲しいものはexecを\verb|exec_i|から呼び出すことで対応する．
+このように欲しい出力に応じて\verb|exec_i|のような関数を増やす．
 
 \section{今後の課題}
 \begin{itemize}
-\item rand()関数が，複数回実行しても出力が変わらない．
-\item ターミナルで表示させた場合に，現状出力をint型に変えて出力を出しているため,出力が整数でない関数の答えがうまく出力されない．
-\item テキストファイルで受け取る際に，プログラムに出力したい結果が複数個があると一番最後に実行されたものしか出力されない．
+\item テキストファイルで受け取る際に，
+プログラムに出力したい結果が複数個があると一番最後に実行されたものしか出力されないため，複数個の出力に対応させる．
 \item 行列データの読み込みと書き出しに対応させる．
 \end{itemize}
+\begin{flushleft}
 \begin{thebibliography}{9}
-\bibitem{Maple}「Maple (メイプル)とは:サイバネット」,Maplesoft, \url{http://www.cybernet.co.jp/maple/product/maple/about.html}, 2016/09/02 アクセス．
+\bibitem{Maple}「Maple(メイプル)とは:サイバネット」, Maplesoft, \url{http://www.cybernet.co.jp/maple/product/maple/about.html}, 2016/09/02 アクセス．
 \end{thebibliography}
+\end{flushleft}
 \end{document}
