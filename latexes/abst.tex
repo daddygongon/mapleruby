@@ -1,0 +1,86 @@
+\documentclass[10pt,a4j,twocolumn]{jsarticle}
+
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{url}
+\setlength{\textheight}{275mm}
+\headheight 5mm
+\topmargin -30mm
+\textwidth 185mm
+\oddsidemargin -15mm
+\evensidemargin -15mm
+\pagestyle{empty}
+\begin{document}
+\title{RubyからMapleを呼び出すインターフェースライブラリの開発}
+\author{情報科学科 西谷研究室 3528 村瀬愛理}
+\date{}
+\maketitle
+\section{開発の背景}
+Rubyは数値計算周りの環境整備が遅れており，Ruby上で高等な関数，
+例えば，大きな素数を求めたり，最小公倍数を求めるなど，
+を使った処理を行うのが難しい．
+また，Ruby以外の数式処理ソフトウェアなどを立ち上げて，
+別々に作業するよりもRubyのみで作業する方が，開発速度が格段に向上する．
+そこで本研究では，数式処理ソフトウェアの１つであるMapleをRuby上で呼び出し，
+Mapleに計算をさせて，その結果をRubyが取得するインターフェースライブラリの開発を目的にしている．
+
+\subsection{Mapleとは}
+Mapleは，1980年にカナダ・ウォータールー大学で生まれた数式処理技術をコアテクノロジーとして持つ
+科学・技術・工学・数学（STEM : Science, Technology, Engineering and Mathematics）に関する統合的計算環境である\cite{Maple}.
+特徴として，たくさんの数学関数を持つこと，大きな数の計算が可能であること，グラフの描画が簡単であることなどが挙げられる．
+
+\section{mapleとの通信手法}
+mapleは一般的には，上述のとおり，
+グラフや数式の綺麗な出力や，数式の入力を初心者が直感的におこなえるように
+Javaで作られたguiを使って実行する．
+それとは別にcommand lineで実行される計算エンジン部が用意されている．
+このエンジンに直接働きかけるcuiを操作する．
+
+rubyのsystemuを使って，出力を得るようにしている．
+
+Ruby上で要求コードを受け取った後，そのコードをtmp.mwに書き込んだ後それをMapleで実行し，
+結果をテキストファイルで受けとる．
+Mapleの関数ごとにそれに応じた関数をRuby上に作り，うまく動作するようにする．
+
+\section{進捗状況}
+\subsection{maple関数の類型化}
+一例として以下の様なMaple関数のrubyでの使用を想定して変換プログラムを作成している．
+これらはRSA暗号化を実行するrubyプログラムを意図している．
+
+Mapleの関数として，この暗号化計算において用いるに関しては表1に記したものを準備したが，
+rand関数がうまく動いてくれずに作業が止まっている状態である．
+また，出力がboonlean型であるisprime関数と出力に()が含まれるifactor関数がターミナル上ではうまく見れない状態である．
+
+\begin{table}[htbp]\begin{center}
+\caption{maplerubyで想定している関数の役割と入出力．}
+\begin{tabular}{lllll}
+\hline
+function  &役割  &入力する型  &出力される型  \\ \hline
+nextprime  &次の素数を求める  &int  &int  \\
+lcm  &最小公倍数  &int,int  &int  \\
+gcd  &最大公約数  &int,int  &int  \\
+rand  &乱数生成  &int  &int  \\
+isprime  &素数判定  &int  &boolearn  \\
+ifactor  &素因数分解  &int  &string?(注1)  \\
+mod  &剰余  &int,int  &int  \\
+\hline
+\end{tabular}
+注1:()に数値が囲われた状態で複数個出力される．
+\label{default}
+\end{center}
+\end{table}
+%for inserting separate lines, use \hline, \cline{2-3} etc.
+
+\subsection{出力の切り替え}
+wrapperを使う．execを\verb|exec_i|から呼び出す．$exec_b$から．．．
+
+\section{今後の課題}
+\begin{itemize}
+\item rand()関数が，複数回実行しても出力が変わらない．
+\item ターミナルで表示させた場合に，現状出力をint型に変えて出力を出しているため,出力が整数でない関数の答えがうまく出力されない．
+\item テキストファイルで受け取る際に，プログラムに出力したい結果が複数個があると一番最後に実行されたものしか出力されない．
+\item 行列データの読み込みと書き出しに対応させる．
+\end{itemize}
+\begin{thebibliography}{9}
+\bibitem{Maple}「Maple (メイプル)とは:サイバネット」,Maplesoft, \url{http://www.cybernet.co.jp/maple/product/maple/about.html}, 2016/09/02 アクセス．
+\end{thebibliography}
+\end{document}
