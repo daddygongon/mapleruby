@@ -1,0 +1,5 @@
+require 'mapleruby'
+
+Maple.new('ImportMatrix("data.txt", delimiter=" ")').exec
+Maple.new('ExportMatrix("ExportData.csv", data, delimiter=",")').exec
+

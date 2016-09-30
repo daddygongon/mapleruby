@@ -24,6 +24,6 @@ My_Maple.new.nextprime(a)
 p  My_Maple.new.isprime(a)
 }
 
-x = 5
-y = 15
+x = 4
+y = 9
 My_Maple.new.lcm(x,y)
