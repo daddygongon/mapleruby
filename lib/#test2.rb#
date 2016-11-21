@@ -1,7 +1,7 @@
-require './mapleruby'
+require 'mapleruby'
 
 p a = 5
-RMaple.new.rand(a)
+Maplerubyx.new.rand(a)
 
 p x = 7
 p y = 3

@@ -1,5 +1,5 @@
 interface(quiet=true);
 writeto("./result.txt");
-isprime(3);
+gcd(3,862);
 writeto(terminal);
 interface(quiet=false);

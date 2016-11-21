@@ -19,7 +19,7 @@ Rubyは数値計算関連の環境整備が遅れており，Ruby上で高等な
 例えば，大きな素数を求めたり，最小公倍数を求めるなど
 の処理を行うのが難しい．
 一方で，Ruby以外の数式処理ソフトウェアなどを立ち上げて，
-別々に作業するよりもRubyのみで作業する方が，開発速度が格段に向上する．
+別々に作業するよりもRubyのみでプログラミングする方が，開発速度の格段の向上が期待できる．
 そこで本研究では，数式処理ソフトウェアの１つであるMapleをRuby上で呼び出し，
 Mapleに計算をさせて，その結果をRubyが取得するインターフェースライブラリの開発を目的とする．
 
@@ -27,7 +27,7 @@ Mapleに計算をさせて，その結果をRubyが取得するインターフ�
 \subsection{Mapleとは}
 Mapleは，1980年にカナダ・ウォータールー大学で生まれた数式処理技術をコアテクノロジーとして持つ
 科学・技術・工学・数学（STEM : Science, Technology, Engineering and Mathematics）に関する統合的計算環境である\cite{Maple}.
-特徴として，たくさんの数学関数を持つこと，大きな桁数の計算が可能であること，グラフの描画が簡単であることなどが挙げられる．
+特徴として，たくさんの数学関数が用意されていること，大きな桁数の計算が可能であること，グラフの描画が簡単であることなどが挙げられる．
 
 \subsection{Mapleとの通信手法}
 Mapleは一般的には，上述のとおり，
@@ -54,7 +54,7 @@ nextprime  &次の素数を求める  &int  &int  \\
 lcm  &最小公倍数  &int,int  &int  \\
 gcd  &最大公約数  &int,int  &int  \\
 rand  &乱数生成  &int  &int  \\
-isprime  &素数判定  &int  &boolearn  \\
+isprime  &素数判定  &int  &boolean  \\
 ifactor  &素因数分解  &int  &string{\footnotesize (注1)}  \\
 mod  &剰余  &int,int  &int  \\
 \hline
@@ -76,13 +76,13 @@ Mapleから受け取ったままの出力は，値の前にスペースがたく
 上述のようにMapleで用意されている関数を類型化して，対応するメソッドを作成していく．
 現時点での課題は次のとおりである．
 \begin{itemize}
-\item テキストファイルで受け取る際に，プログラムに出力したい結果が複数個があると一番最後に実行されたものしか出力されない．複数個の結果の出力に対応させる．
+\item テキストファイルで受け取る際に，プログラムに出力したい結果が複数個あると一番最後に実行されたものしか出力されない．複数個の結果の出力に対応させる．
 \item 行列データの読み込みと書き出しに対応させる．
 \end{itemize}
 
-
+\begin{flushleft}
 \begin{thebibliography}{9}
 \bibitem{Maple}「Maple(メイプル)とは」, サイバネット, \url{http://www.cybernet.co.jp/maple/product/maple/about.html}, 2016/09/02 アクセス．
 \end{thebibliography}
-
+\end{flushleft}
 \end{document}

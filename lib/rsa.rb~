@@ -1,17 +1,52 @@
-require 'mapleruby'
+require 'prime'
 
-m1 = RMaple.new.rand(10**80)
-m2 = RMaple.new.rand(10**80)
+def rsa(input)
+  c = input.to_i
+  print "平文>>> #{c}\n"
+  big_num = 999
 
-x = RMaple.new.nextprime(m1)
-y = RMaple.new.nextprime(m2)
+  p,q,n=0,0,0
+  100.times{
+    p = Prime.each.find{|e| e >= rand(big_num)}
+    q = Prime.each.find{|e| e >= rand(big_num)}
+    
+    n = p*q
+    break if n>c*1.5
+  }
+  l = (p-1).lcm(q-1)
 
-e = 2**16+1
-e_b = RMaple.new.isprime(e)
+  print "素数 p >>> #{p}\n"
+  print "素数 q >>> #{q}\n"
+  print "N >>> #{n}\n"
+  print "L >>> #{l}\n"
 
-p m1
-p m2
-p x
-p y
-p e
-p e_b
+  for e in 2..l do
+    break if e.gcd(l)==1
+  end
+
+  print "公開鍵>>> E = #{e}, N = #{n}\n"
+
+  for d in 2..l do
+    break if (e*d)%l==1
+  end
+
+  print "秘密鍵>>> D = #{d}, N = #{n}\n"
+
+  m = c**e % n
+  re_c = m**d % n
+
+  print "暗号化>>> #{m}\n"
+  print "復号化>>> #{re_c}\n"
+  
+ # if re_c!=c then
+ #   print c.to_s+"\n"
+ #   print n
+ #   sleep 3
+ # end
+end
+
+rsa(ARGV[0])
+
+#100.times{
+#  rsa(8000)
+#}
