@@ -1,9 +1,9 @@
-require 'mapleruby'
-
+require './mapleruby'
 
 p a = 5
 RMaple.new.rand(a)
 
+=begin
 p x = 7
 p y = 3
 RMaple.new.mod(x,y)
@@ -19,3 +19,4 @@ RMaple.new.gcd(x,y)
 p a = 3
 RMaple.new.nextprime(a)
 RMaple.new.isprime(a)
+=end

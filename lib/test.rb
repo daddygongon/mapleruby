@@ -1,7 +1,6 @@
-require 'mapleruby'
+require './mapleruby'
 
 Mapleruby.new('1+1').exec
-
 class My_Maple
   def nextprime(a)
     p a = a.to_i
@@ -17,7 +16,6 @@ class My_Maple
     Mapleruby.new("lcm(#{a},#{b})").exec
   end
 end
-
 a = 1.0e10
 My_Maple.new.nextprime(a)
 [13,17,23,27].each{|a|

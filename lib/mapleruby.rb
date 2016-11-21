@@ -34,6 +34,18 @@ class RMaple
     a = a.to_i
     print(Mapleruby.new("ifactor(#{a})").exec_s)
   end
+  def randomaize(a)
+    a = a.to_i
+    p Mapleruby.new("randomaize(#{a})").exec_i
+  end
+=begin
+  def importmatrix(a,b)
+    p a
+    p b
+    p text = "ImportMatrix(#{a},delimiter=#{b})"
+    p Mapleruby.new(text).exec_s
+  end
+=end
 end
 
 class Mapleruby
