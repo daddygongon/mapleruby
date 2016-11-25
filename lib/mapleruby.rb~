@@ -34,14 +34,12 @@ class RMaple
     a = a.to_i
     print(Mapleruby.new("ifactor(#{a})").exec_s)
   end
-=begin
   def importmatrix(a,b)
     p a
     p b
-    p text = "ImportMatrix(#{a},delimiter=#{b})"
+    puts text = "ImportMatrix(\"#{a}\",delimiter=\"#{b}\")"
     p Mapleruby.new(text).exec_s
   end
-=end
 end
 
 class Mapleruby

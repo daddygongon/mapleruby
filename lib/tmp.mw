@@ -1,5 +1,5 @@
 interface(quiet=true);
 writeto("./result.txt");
-gcd(3,862);
+ImportMatrix("matrix.txt",delimiter=" ");
 writeto(terminal);
 interface(quiet=false);
