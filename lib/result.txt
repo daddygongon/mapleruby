@@ -1,6 +1,3 @@
-                                 [1    3    7]
-                                 [           ]
-                                 [4    2    3]
-                                 [           ]
-                                 [5    1    4]
-
+on line 3 of "tmp.mw", syntax error, unexpected number:
+ExportMatrix("ExportData.csv",                                 [1    3    7]
+                                                                     ^

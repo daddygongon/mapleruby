@@ -40,6 +40,7 @@ class RMaple
     puts text = "ImportMatrix(\"#{a}\",delimiter=\"#{b}\")"
     p Mapleruby.new(text).exec_s
   end
+  
 end
 
 class Mapleruby
