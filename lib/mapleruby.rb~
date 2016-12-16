@@ -40,7 +40,14 @@ class RMaple
     puts text = "ImportMatrix(\"#{a}\",delimiter=\"#{b}\")"
     p Mapleruby.new(text).exec_s
   end
-  
+  def exportmatrix(a,b,c)
+    p a
+    p b
+    p c
+    #ExportMatrix("ExportData.csv", data, delimite=" ")
+    puts text = "ExportMatrix(\"#{a}\",#{b},delimiter=\"#{c}\")"
+    p Mapleruby.new(text).exec_s
+  end
 end
 
 class Mapleruby

@@ -44,8 +44,7 @@ class RMaple
     p a
     p b
     p c
-    #ExportMatrix("ExportData.csv", data, delimite=" ")
-    puts text = "ExportMatrix(\"#{a}\",#{b},delimiter=\"#{c}\")"
+    puts text = "ExportMatrix(\"#{a}\",b,delimiter=\"#{c}\")"
     p Mapleruby.new(text).exec_s
   end
 end
