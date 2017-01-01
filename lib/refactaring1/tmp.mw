@@ -1,5 +1,5 @@
 interface(quiet=true);
 writeto("./result.txt");
-rand(5)();
+ifactor(12)();
 writeto(terminal);
 interface(quiet=false);
