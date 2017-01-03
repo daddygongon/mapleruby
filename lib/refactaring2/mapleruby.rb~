@@ -3,81 +3,56 @@ require 'systemu'
 require 'yaml'
 
 class RMaple
-  a = a.to_i
-=begin
   def nextprime(a)
-    main_i :nextprime, a
+    a = a.to_i
+    p Mapleruby.new("nextprime(#{a})").exec_i
   end
-  def rand(a)
-    main_i :rand, a
+  def isprime(a)
+    a = a.to_i
+    p Mapleruby.new("isprime(#{a})").exec_b
   end
   def lcm(a,b)
-    main_i :lcm, a, b
+    a = a.to_i
+    b = b.to_i
+    p Mapleruby.new("lcm(#{a},#{b})").exec_i
   end
   def gcd(a,b)
-    main_i :gcd, a, b
+    a = a.to_i
+    b = b.to_i
+    p Mapleruby.new("gcd(#{a},#{b})").exec_i
+  end
+  def rand(a)
+    a = a.to_i
+    p Mapleruby.new("rand(#{a})()").exec_i
   end
   def mod(a,b)
-    main_i :modp, a, b
+    a = a.to_i
+    b = b.to_i
+    p Mapleruby.new("modp(#{a},#{b})").exec_i
   end
-=end
-
-  def self.main_i(name,*list_a)
-    p name
-    p list_a
-    define_method(name,*list_a) do
-       p Mapleruby.new("#{name}",list_a).exec_i
-    end
-  end
- 
-main_i.new.send(:nextprime,a) 
-#  main_i :nextprime
-#  main_i :rand, a
-#  main_i :lcm, a, b
-#  main_i :gcd, a, b
-#  main_i :modp, a, b
-
-  def isprime(a)
-    main_b :isprime, a
-  end
-  def main_b(name,*list_a)
-    p name
-    p list_a
-    p Mapleruby.new("#{name}",list_a).exec_b
-  end
-
   def ifactor(a)
-    main_s :ifactor, a
+    a = a.to_i
+    print(Mapleruby.new("ifactor(#{a})").exec_s)
   end
-  def main_s(name,*list_a)
-    p name
-    p list_a
-    print(Mapleruby.new("#{name}",*list_a).exec_s)
-  end
-    
   def importmatrix(a,b)
     p a
     p b
     puts text = "ImportMatrix(\"#{a}\",delimiter=\"#{b}\")"
     p Mapleruby.new(text).exec_s
   end
-
-=begin
   def exportmatrix(a,b,c)
     p a
     p b
     p c
-    puts text = "ExportMatrix(\"#{a}\",#{b},delimiter=\"#{c}\")"
+    puts text = "ExportMatrix(\"#{a}\",b,delimiter=\"#{c}\")"
     p Mapleruby.new(text).exec_s
   end
-=end
 end
 
 class Mapleruby
   DATA_FILE=File.join(ENV['HOME'],'.mapleruby_rc')
   # Your code goes here...
-  def initialize(maple_code, *args)
-    @args = args
+  def initialize(maple_code)
     @maple_code = maple_code
     @src = get_env
     @maple_path=@src[:MAPLE_PATH]
@@ -96,11 +71,10 @@ class Mapleruby
     return result
   end
   def exec
-    maple_args=@args.join(',')
     code0=<<EOS
 interface(quiet=true);
 writeto("./result.txt");
-#{@maple_code}(#{maple_args})();
+#{@maple_code};
 writeto(terminal);
 interface(quiet=false);
 EOS
