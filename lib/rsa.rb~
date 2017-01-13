@@ -1,11 +1,13 @@
 require 'prime'
-
+include Math
 def rsa(input)
   c = input.to_i
   print "平文>>> #{c}\n"
-  big_num = 999
-
+#  big_num = 9999
+  big_num = sqrt(c).to_i
+  num = 1000 #適当
   p,q,n=0,0,0
+=begin
   100.times{
     p = Prime.each.find{|e| e >= rand(big_num)}
     q = Prime.each.find{|e| e >= rand(big_num)}
@@ -13,6 +15,12 @@ def rsa(input)
     n = p*q
     break if n>c*1.5
   }
+=end
+
+  p = Prime.each.find{|e| e >= rand(big_num+1..big_num+num)}
+  q = Prime.each.find{|e| e >= rand(big_num+1..big_num+num)}
+
+  n = p*q
   l = (p-1).lcm(q-1)
 
   print "素数 p >>> #{p}\n"

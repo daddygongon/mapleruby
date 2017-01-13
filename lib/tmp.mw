@@ -1,5 +1,5 @@
 interface(quiet=true);
 writeto("./result.txt");
-gcd(3,862);
+with(LinearAlgebra): a:=convert([[1, 4, 7], [2, 5, 8], [3, 6, 9]],Matrix): MatrixInverse(a);
 writeto(terminal);
 interface(quiet=false);

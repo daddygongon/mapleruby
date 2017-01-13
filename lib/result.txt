@@ -1,2 +1,1 @@
-                                       1
-
+Error, (in MatrixInverse) singular matrix

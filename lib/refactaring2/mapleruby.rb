@@ -3,7 +3,6 @@ require 'systemu'
 require 'yaml'
 
 class RMaple
-  #整数論
   def nextprime(a)
     a = a.to_i
     p Mapleruby.new("nextprime(#{a})").exec_i
@@ -35,20 +34,11 @@ class RMaple
     a = a.to_i
     print(Mapleruby.new("ifactor(#{a})").exec_s)
   end
-
-  #行列
-  def matrix(a,b,c)
-    p a.to_i
-    p b.to_i
-    p c
-    puts text = "with(LinearAlgebra): matrix(#{a}, #{b}, #{c})"
-    p x = Mapleruby.new(text).exec_matrix(b)
-  end
   def importmatrix(a,b)
     p a
     p b
-    text = "ImportMatrix(\"#{a}\",delimiter=\"#{b}\")"
-    p Mapleruby.new(text).exec_i
+    puts text = "ImportMatrix(\"#{a}\",delimiter=\"#{b}\")"
+    p Mapleruby.new(text).exec_s
   end
 =begin
   def exportmatrix(a,b,c)
@@ -59,27 +49,7 @@ class RMaple
     p Mapleruby.new(text).exec_s
   end
 =end
-  def matrixinverse(a)
-    p a
-    puts text = "with(LinearAlgebra): a:=convert(#{a},Matrix): MatrixInverse(a)"
-    p Mapleruby.new(text).exec_s
-  end
-  def determinant(a)
-    p a
-    puts text = "with(LinearAlgebra): a:=convert(#{a},Matrix): Determinant(a)"
-    p Mapleruby.new(text).exec_i
-  end
-  def transpose(a)
-    p a
-    puts text = "with(LinearAlgebra): a:=convert(#{a},Matrix): Transpose(a)"
-    p Mapleruby.new(text).exec_s
-  end
-  def eigenvectors(a)
-    p a
-    puts text = "with(LinearAlgebra): a:=convert(#{a},Matrix): Eigenvectors(a)"
-   # puts text = "with(LinearAlgebra): a:=convert(#{a},Matrix): evalf(Eigenvectors(a))"
-    p Mapleruby.new(text).exec_s
-  end
+
 end
 
 class Mapleruby
@@ -102,17 +72,8 @@ class Mapleruby
  def exec_s
     result = exec
     return result
- end
- def exec_matrix(b)
-  #行列中に0がある場合誤作動するのでコメントアウト
-  # x = exec.split("").map(&:to_i)
-  # y = x.reject{|i| i == 0}
-   x =exec.split(",")
-   y = x.reject{|i| i == " "}
-   #result = x.each_slice(b).to_a
-   return result
- end
-   def exec
+  end
+  def exec
     code0=<<EOS
 interface(quiet=true);
 writeto("./result.txt");

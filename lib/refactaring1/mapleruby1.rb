@@ -3,40 +3,48 @@ require 'systemu'
 require 'yaml'
 
 class RMaple
-  #整数論
+  a = a.to_i
+#整数論
   def nextprime(a)
-    a = a.to_i
-    p Mapleruby.new("nextprime(#{a})").exec_i
-  end
-  def isprime(a)
-    a = a.to_i
-    p Mapleruby.new("isprime(#{a})").exec_b
-  end
-  def lcm(a,b)
-    a = a.to_i
-    b = b.to_i
-    p Mapleruby.new("lcm(#{a},#{b})").exec_i
-  end
-  def gcd(a,b)
-    a = a.to_i
-    b = b.to_i
-    p Mapleruby.new("gcd(#{a},#{b})").exec_i
+    main_i :nextprime, a
   end
   def rand(a)
-    a = a.to_i
-    p Mapleruby.new("rand(#{a})()").exec_i
+    main_i :rand, a
+  end
+  def lcm(a,b)
+    main_i :lcm, a, b
+  end
+  def gcd(a,b)
+    main_i :gcd, a, b
   end
   def mod(a,b)
-    a = a.to_i
-    b = b.to_i
-    p Mapleruby.new("modp(#{a},#{b})").exec_i
+    main_i :modp, a, b
   end
-  def ifactor(a)
-    a = a.to_i
-    print(Mapleruby.new("ifactor(#{a})").exec_s)
+  def main_i(name,*list_a)
+    p name
+    p list_a
+    p Mapleruby.new("#{name}",list_a).exec_i
   end
 
-  #行列
+  def isprime(a)
+    main_b :isprime, a
+  end
+  def main_b(name,*list_a)
+    p name
+    p list_a
+    p Mapleruby.new("#{name}",list_a).exec_b
+  end
+
+  def ifactor(a)
+    main_s :ifactor, a
+  end
+  def main_s(name,*list_a)
+    p name
+    p list_a
+    print(Mapleruby.new("#{name}",*list_a).exec_s)
+  end
+    
+#行列
   def matrix(a,b,c)
     p a.to_i
     p b.to_i
@@ -50,19 +58,8 @@ class RMaple
     text = "ImportMatrix(\"#{a}\",delimiter=\"#{b}\")"
     p Mapleruby.new(text).exec_i
   end
-=begin
-  def exportmatrix(a,b,c)
-    p a
-    p b
-    p c
-    puts text = "ExportMatrix(\"#{a}\",b,delimiter=\"#{c}\")"
-    p Mapleruby.new(text).exec_s
-  end
-=end
   def matrixinverse(a)
-    p a
-    puts text = "with(LinearAlgebra): a:=convert(#{a},Matrix): MatrixInverse(a)"
-    p Mapleruby.new(text).exec_s
+    main_m :matrixinverse, a
   end
   def determinant(a)
     p a
@@ -77,7 +74,13 @@ class RMaple
   def eigenvectors(a)
     p a
     puts text = "with(LinearAlgebra): a:=convert(#{a},Matrix): Eigenvectors(a)"
-   # puts text = "with(LinearAlgebra): a:=convert(#{a},Matrix): evalf(Eigenvectors(a))"
+    # puts text = "with(LinearAlgebra): a:=convert(#{a},Matrix): evalf(Eigenvectors(a))"
+    p Mapleruby.new(text).exec_s
+  end
+  def main_m(name, *list_a)
+    p name
+    p *list_a
+    puts text = "with(LinearAlgebra): a:=convert(#{a},Matrix): #{name}(a)"
     p Mapleruby.new(text).exec_s
   end
 end
@@ -85,7 +88,8 @@ end
 class Mapleruby
   DATA_FILE=File.join(ENV['HOME'],'.mapleruby_rc')
   # Your code goes here...
-  def initialize(maple_code)
+  def initialize(maple_code, *args)
+    @args = args
     @maple_code = maple_code
     @src = get_env
     @maple_path=@src[:MAPLE_PATH]
@@ -99,24 +103,22 @@ class Mapleruby
     return false if result.match(/false/)
     return true if result.match(/true/)
   end
- def exec_s
+  def exec_s
     result = exec
     return result
- end
- def exec_matrix(b)
-  #行列中に0がある場合誤作動するのでコメントアウト
-  # x = exec.split("").map(&:to_i)
-  # y = x.reject{|i| i == 0}
-   x =exec.split(",")
-   y = x.reject{|i| i == " "}
-   #result = x.each_slice(b).to_a
-   return result
- end
-   def exec
+  end
+  def exec_matrix(b)
+    x = exec.gsub(/[^\d]/, " ")
+    x1 = x.split(" ").map(&:to_i)
+    result = x1.each_slice(b).to_a
+    return result
+  end
+  def exec
+    maple_args=@args.join(',')
     code0=<<EOS
 interface(quiet=true);
 writeto("./result.txt");
-#{@maple_code};
+#{@maple_code}(#{maple_args})();
 writeto(terminal);
 interface(quiet=false);
 EOS

@@ -1,0 +1,5 @@
+interface(quiet=true);
+writeto("./result.txt");
+rand(9999)();
+writeto(terminal);
+interface(quiet=false);

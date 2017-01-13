@@ -1,4 +1,0 @@
-require 'mapleruby'
-
-p a = 5
-new.rand(a)
