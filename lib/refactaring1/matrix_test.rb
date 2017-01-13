@@ -14,12 +14,12 @@ c = [[1,4,7],[2,5,8],[3,6,9]]
 d = [[1,0,0],[0,11,0],[0,0,1]]
 
 p x = RMaple.new.matrix(a, b, c)
-p y = RMaple.new.matrix(a, b, d)
+#p y = RMaple.new.matrix(a, b, d)
 
-p Mapleruby.new("convert(#{x},Matrix)+convert(#{y},Matrix)").exec_s
+#p Mapleruby.new("convert(#{x},Matrix)+convert(#{y},Matrix)").exec_s
 
 
-#RMaple.new.matrixinverse(x)
-#RMaple.new.determinant(y)
-#RMaple.new.transpose(x)
-#RMaple.new.eigenvectors(x)
+RMaple.new.matrixinverse(x)
+RMaple.new.determinant(x)
+RMaple.new.transpose(x)
+RMaple.new.eigenvectors(x)

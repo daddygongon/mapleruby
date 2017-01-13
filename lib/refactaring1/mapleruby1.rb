@@ -4,6 +4,7 @@ require 'yaml'
 
 class RMaple
   a = a.to_i
+#整数論
   def nextprime(a)
     main_i :nextprime, a
   end
@@ -43,22 +44,45 @@ class RMaple
     print(Mapleruby.new("#{name}",*list_a).exec_s)
   end
     
+#行列
+  def matrix(a,b,c)
+    p a.to_i
+    p b.to_i
+    p c
+    puts text = "with(LinearAlgebra): matrix(#{a}, #{b}, #{c})"
+    p x = Mapleruby.new(text).exec_matrix(b)
+  end
   def importmatrix(a,b)
     p a
     p b
-    puts text = "ImportMatrix(\"#{a}\",delimiter=\"#{b}\")"
-    p Mapleruby.new(text).exec_s
+    text = "ImportMatrix(\"#{a}\",delimiter=\"#{b}\")"
+    p Mapleruby.new(text).exec_i
   end
-
-=begin
-  def exportmatrix(a,b,c)
+  def matrixinverse(a)
+    main_m :matrixinverse, a
+  end
+  def determinant(a)
     p a
-    p b
-    p c
-    puts text = "ExportMatrix(\"#{a}\",#{b},delimiter=\"#{c}\")"
+    puts text = "with(LinearAlgebra): a:=convert(#{a},Matrix): Determinant(a)"
+    p Mapleruby.new(text).exec_i
+  end
+  def transpose(a)
+    p a
+    puts text = "with(LinearAlgebra): a:=convert(#{a},Matrix): Transpose(a)"
     p Mapleruby.new(text).exec_s
   end
-=end
+  def eigenvectors(a)
+    p a
+    puts text = "with(LinearAlgebra): a:=convert(#{a},Matrix): Eigenvectors(a)"
+    # puts text = "with(LinearAlgebra): a:=convert(#{a},Matrix): evalf(Eigenvectors(a))"
+    p Mapleruby.new(text).exec_s
+  end
+  def main_m(name, *list_a)
+    p name
+    p *list_a
+    puts text = "with(LinearAlgebra): a:=convert(#{a},Matrix): #{name}(a)"
+    p Mapleruby.new(text).exec_s
+  end
 end
 
 class Mapleruby
@@ -79,8 +103,14 @@ class Mapleruby
     return false if result.match(/false/)
     return true if result.match(/true/)
   end
- def exec_s
+  def exec_s
     result = exec
+    return result
+  end
+  def exec_matrix(b)
+    x = exec.gsub(/[^\d]/, " ")
+    x1 = x.split(" ").map(&:to_i)
+    result = x1.each_slice(b).to_a
     return result
   end
   def exec

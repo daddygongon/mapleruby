@@ -4,7 +4,7 @@ require 'yaml'
 
 class RMaple
   a = a.to_i
-#整数論
+=begin
   def nextprime(a)
     main_i :nextprime, a
   end
@@ -20,11 +20,22 @@ class RMaple
   def mod(a,b)
     main_i :modp, a, b
   end
-  def main_i(name,*list_a)
+=end
+
+  def self.main_i(name,*list_a)
     p name
     p list_a
-    p Mapleruby.new("#{name}",list_a).exec_i
+    define_method(name,*list_a) do
+       p Mapleruby.new("#{name}",list_a).exec_i
+    end
   end
+ 
+main_i.new.send(:nextprime,a) 
+#  main_i :nextprime
+#  main_i :rand, a
+#  main_i :lcm, a, b
+#  main_i :gcd, a, b
+#  main_i :modp, a, b
 
   def isprime(a)
     main_b :isprime, a
@@ -44,38 +55,22 @@ class RMaple
     print(Mapleruby.new("#{name}",*list_a).exec_s)
   end
     
-#行列
-  def matrix(a,b,c)
-    p a.to_i
-    p b.to_i
-    p c
-    puts text = "with(LinearAlgebra): matrix(#{a}, #{b}, #{c})"
-    p x = Mapleruby.new(text).exec_matrix(b)
-  end
   def importmatrix(a,b)
     p a
     p b
-    text = "ImportMatrix(\"#{a}\",delimiter=\"#{b}\")"
-    p Mapleruby.new(text).exec_i
-  end
-  def matrixinverse(a)
-    main_m :MatrixInverse, a
-  end
-  def determinant(a)
-    main_m :Determinant, a
-  end
-  def transpose(a)
-    main_m :Transpose, a
-  end
-  def eigenvectors(a)
-    main_m :Eigenvectors, a
-  end
-  def main_m(name, list_a)
-    p name
-    p list_a
-    puts text = "with(LinearAlgebra): a:=convert(#{list_a},Matrix): #{name}(a)"
+    puts text = "ImportMatrix(\"#{a}\",delimiter=\"#{b}\")"
     p Mapleruby.new(text).exec_s
   end
+
+=begin
+  def exportmatrix(a,b,c)
+    p a
+    p b
+    p c
+    puts text = "ExportMatrix(\"#{a}\",#{b},delimiter=\"#{c}\")"
+    p Mapleruby.new(text).exec_s
+  end
+=end
 end
 
 class Mapleruby
@@ -96,14 +91,8 @@ class Mapleruby
     return false if result.match(/false/)
     return true if result.match(/true/)
   end
-  def exec_s
+ def exec_s
     result = exec
-    return result
-  end
-  def exec_matrix(b)
-    x = exec.gsub(/[^\d]/, " ")
-    x1 = x.split(" ").map(&:to_i)
-    result = x1.each_slice(b).to_a
     return result
   end
   def exec
