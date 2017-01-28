@@ -19,7 +19,7 @@ p x = RMaple.new.matrix(a, b, c)
 #p Mapleruby.new("convert(#{x},Matrix)+convert(#{y},Matrix)").exec_s
 
 
-RMaple.new.matrixinverse(x)
+#RMaple.new.matrixinverse(x)
 #RMaple.new.determinant(y)
 #RMaple.new.transpose(x)
-#RMaple.new.eigenvectors(x)
+RMaple.new.eigenvectors(x)

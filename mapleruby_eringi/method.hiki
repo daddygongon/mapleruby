@@ -1,0 +1,77 @@
+!第二章 手法
+!!Mapleとの通信手法
+Mapleは一般的に，グラフや数式の綺麗な出力や，数式の入力を
+初心者が直感的におこなえるようにJavaで作られたGUIを使って実行する．
+それとは別にcommand lineで実行される計算エンジン部が用意されている．
+そこで,開発するRubyライブラリでは，このエンジンに直接働きかけて操作する．
+Rubyで外部コマンドを実行するgem libraryのsystemuを使って，
+出力を得るようにしている．Ruby codeで要求コードを受け取った場合，
+そのコードをtmp.mwに書き込む．それをMapleで実行し，結果をテキストファイルで
+受けとることで出力を得る．
+!!Maple関数の類型化
+今回，数多く存在するMapleの数学関数の中から整数論と行列に関するものを選抜し実装した．
+図1 実装した整数論に関する関数の役割と入出力
+図2 実装した行列に関する関数の役割と入出力
+!!出力の切り替え
+Mapleから受け取ったままの出力は，値の前にスペースがたくさん入っていることや，
+出力が String 型であることから，その数値を使って計算をするようにプログラミングしていた場合に
+支障をきたす．このため，関数ごとに正しい型で出力できるようにwrapperを作る．
+例えば，int 型で出力が欲しいものはexecをexec_iから呼び出すことで対応する．
+このようにbooleanやfloatといった出力型に応じて，exec_b，exec_fのように関数を増やしていく．
+!!!出力の切り替えの例 - 整数論の場合
+まず，nextprimeを例にとると
+	require "mapleruby/version"
+	require 'systemu'
+	require 'yaml'
+	
+	class RMaple
+		#整数論                                                                       
+		def nextprime(a)
+			a = a.to_i
+			p Mapleruby.new("nextprime(#{a})").exec_i
+		end
+	end
+	class Mapleruby
+		DATA_FILE=File.join(ENV['HOME'],'.mapleruby_rc')
+		# Your code goes here...                                                      
+		def initialize(maple_code)
+			@maple_code = maple_code
+			@src = get_env
+			@maple_path=@src[:MAPLE_PATH]
+		end
+		def exec_i
+			result = exec
+			return result.to_i
+		end
+			def exec
+			 code0=<<EOS
+	interface(quiet=true);                                                          
+	writeto("./result.txt");                                                        
+	#{@maple_code};                                                                 
+	writeto(terminal);                                                              
+	interface(quiet=false);                                                         
+	EOS
+			 File.write('tmp.mw',code0)
+			 command="#{@maple_path} tmp.mw"
+			 status,stdout,stderr=systemu command
+			 status,stdout,stderr=systemu 'cat result.txt'
+			# result=stdout                                                              
+		  # print(result)                                                              
+			 return stdout
+		end
+		def get_env
+			begin
+				file = File.open(DATA_FILE,'r')
+			rescue => evar
+				p evar
+				print "no resource file for mapleruby.\n"
+			end
+			@src = YAML.load(file.read)
+			file.close
+			p @src
+		end
+		
+	end
+このようにexec_iは，execを通った値をto_iし，int型にしてから返すようになっている．
+もし使われた関数がisprimeだった場合はexex_bから返されるときに，boolean型のtrueとfalseが返されるようになっている．
+!!!出力の切り替えの例 - 行列

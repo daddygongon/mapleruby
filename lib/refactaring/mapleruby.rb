@@ -4,7 +4,7 @@ require 'yaml'
 
 class RMaple
   a = a.to_i
-=begin
+#整数論
   def nextprime(a)
     main_i :nextprime, a
   end
@@ -20,22 +20,11 @@ class RMaple
   def mod(a,b)
     main_i :modp, a, b
   end
-=end
-
-  def self.main_i(name,*list_a)
+  def main_i(name,*list_a)
     p name
     p list_a
-    define_method(name,*list_a) do
-       p Mapleruby.new("#{name}",list_a).exec_i
-    end
+    p Mapleruby.new("#{name}",list_a).exec_i
   end
- 
-main_i.new.send(:nextprime,a) 
-#  main_i :nextprime
-#  main_i :rand, a
-#  main_i :lcm, a, b
-#  main_i :gcd, a, b
-#  main_i :modp, a, b
 
   def isprime(a)
     main_b :isprime, a
@@ -55,22 +44,44 @@ main_i.new.send(:nextprime,a)
     print(Mapleruby.new("#{name}",*list_a).exec_s)
   end
     
+#行列
+  def matrix(a,b,c)
+    p a.to_i
+    p b.to_i
+    p c
+    puts text = "with(LinearAlgebra): matrix(#{a}, #{b}, #{c})"
+    p x = Mapleruby.new(text).exec_m(b)
+  end
   def importmatrix(a,b)
     p a
     p b
-    puts text = "ImportMatrix(\"#{a}\",delimiter=\"#{b}\")"
+    text = "ImportMatrix(\"#{a}\",delimiter=\"#{b}\")"
+    p Mapleruby.new(text).exec_i
+  end
+  def matrixinverse(a)
+    main_m :MatrixInverse, a
+  end
+  def determinant(a)
+    main_mf :Determinant, a
+  end
+  def transpose(a)
+    main_m :Transpose, a
+  end
+  def eigenvectors(a)
+    main_m :Eigenvectors, a
+  end
+  def main_m(name, list_a)
+    p name
+    p list_a
+    puts text = "with(LinearAlgebra): a:=convert(#{list_a},Matrix): evalf(#{name}(a))"
     p Mapleruby.new(text).exec_s
   end
-
-=begin
-  def exportmatrix(a,b,c)
-    p a
-    p b
-    p c
-    puts text = "ExportMatrix(\"#{a}\",#{b},delimiter=\"#{c}\")"
-    p Mapleruby.new(text).exec_s
+  def main_mf(name, list_a)
+    p name
+    p list_a
+    puts text = "with(LinearAlgebra): a:=convert(#{list_a},Matrix): #{name}(a)"
+    p Mapleruby.new(text).exec_f
   end
-=end
 end
 
 class Mapleruby
@@ -86,13 +97,23 @@ class Mapleruby
     result = exec
     return result.to_i
   end
+  def exec_f
+    result = exec
+    return result.to_f
+  end
   def exec_b
     result = exec
     return false if result.match(/false/)
     return true if result.match(/true/)
   end
- def exec_s
+  def exec_s
     result = exec
+    return result
+  end
+  def exec_m(b)
+    x = exec.gsub(/[^\d]/, " ")
+    x1 = x.split(" ").map(&:to_i)
+    result = x1.each_slice(b).to_a
     return result
   end
   def exec

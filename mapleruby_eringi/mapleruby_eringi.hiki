@@ -1,4 +1,5 @@
-!卒論タイトル
+!Ruby から Maple を呼び出すインターフェースライブラリの開発
 
 ![[概要|mapleruby_eringi_abst]]
 ![[イントロダクション|mapleruby_eringi_introduction]]
+![[手法|mapleruby_eringi_method]]
