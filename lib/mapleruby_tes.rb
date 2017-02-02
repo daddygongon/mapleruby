@@ -22,18 +22,19 @@ class Mapleruby
     @maple_path=@src[:MAPLE_PATH]
   end
   def exec_m(b)
-    # x = exec.gsub(/[^\d]/, " ") #本来
-    # x1 = x.split(" ").map(&:to_i)
-    # result = x1.each_slice(b).to_a
+     x = exec.gsub(/[^\d]/, " ") #本来
+     x1 = x.split(" ").map(&:to_i)
+     result = x1.each_slice(b).to_a
     # x = exec.split("").map(&:to_i) #要素に0があった場合不可
     # x1 = x.delete_if{|i| i==0}
     # result = x1.each_slice(b).to_a
-    x = exec.split("")
-    x1 = x.delete_if{|i| i == " "}
-    x2 = x1.delete_if{|j| j == "\n"}
-    x3 = x2.delete_if{|k| k == "]"}
-    x4 = x3.delete_if{|l| l =="["}
-    result = x4.each_slice(b).to_a
+    # x = exec.split("") #要素に二桁以上の値があった場合不可
+    # x1 = x.delete_if{|i| i == " "}
+    # x2 = x1.delete_if{|j| j == "\n"}
+    # x3 = x2.delete_if{|k| k == "]"}
+    # x4 = x3.delete_if{|l| l =="["}
+    # x5 = x4.map(&:to_i)
+    # result = x5.each_slice(b).to_a
     return result
   end
    def exec

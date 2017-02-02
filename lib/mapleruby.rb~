@@ -99,8 +99,8 @@ class Mapleruby
     return result
  end
  def exec_m(b)
-   x = exec.gsub(/[^\d]/, " ")
-   x1 = x.split(" ").map(&:to_i)
+  p x = exec.gsub(/[^\d]/, " ")
+  p x1 = x.split(" ").map(&:to_i)
    result = x1.each_slice(b).to_a
    return result
  end
@@ -116,8 +116,6 @@ EOS
     command="#{@maple_path} tmp.mw"
     status,stdout,stderr=systemu command
     status,stdout,stderr=systemu 'cat result.txt'
-   # result=stdout
-   # print(result)
     return stdout
   end
 
@@ -134,8 +132,3 @@ EOS
   end
 
 end
-
-
-
-
-

@@ -4,7 +4,6 @@ require 'yaml'
 
 class RMaple
   a = a.to_i
-#整数論
   def nextprime(a)
     main_i :nextprime, a
   end
@@ -25,7 +24,6 @@ class RMaple
     p list_a
     p Mapleruby.new("#{name}",list_a).exec_i
   end
-
   def isprime(a)
     main_b :isprime, a
   end
@@ -34,7 +32,6 @@ class RMaple
     p list_a
     p Mapleruby.new("#{name}",list_a).exec_b
   end
-
   def ifactor(a)
     main_s :ifactor, a
   end
@@ -43,8 +40,6 @@ class RMaple
     p list_a
     print(Mapleruby.new("#{name}",*list_a).exec_s)
   end
-    
-#行列
   def matrix(a,b,c)
     p a.to_i
     p b.to_i
@@ -73,7 +68,7 @@ class RMaple
   def main_m(name, list_a)
     p name
     p list_a
-    puts text = "with(LinearAlgebra): a:=convert(#{list_a},Matrix): #{name}(a)"
+    puts text = "with(LinearAlgebra): a:=convert(#{list_a},Matrix): evalf(#{name}(a))"
     p Mapleruby.new(text).exec_s
   end
   def main_mf(name, list_a)
@@ -86,7 +81,6 @@ end
 
 class Mapleruby
   DATA_FILE=File.join(ENV['HOME'],'.mapleruby_rc')
-  # Your code goes here...
   def initialize(maple_code, *args)
     @args = args
     @maple_code = maple_code
@@ -129,11 +123,8 @@ EOS
     command="#{@maple_path} tmp.mw"
     status,stdout,stderr=systemu command
     status,stdout,stderr=systemu 'cat result.txt'
-   # result=stdout
-   # print(result)
     return stdout
   end
-
   def get_env
     begin 
       file = File.open(DATA_FILE,'r')
@@ -145,10 +136,4 @@ EOS
     file.close
     p @src
   end
-
 end
-
-
-
-
-
