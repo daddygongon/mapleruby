@@ -44,7 +44,8 @@ def rsa(input)
   print "復号化>>> #{re_c}\n"
 end
 
-rsa(ARGV[0])>>>
+rsa(ARGV[0])
+>>>
 
 このプログラムはRubyだけで書かれている．例えば平文を256と入力すると，
   /Users/eri/mapleruby/lib% ruby rsa.rb 256
@@ -133,7 +134,8 @@ def rsa(input)
   print "復号化>>> #{re_c}\n"
 end
 
-rsa(ARGV[0])>>>
+rsa(ARGV[0])
+>>>
 
 このプログラムに関しては，maplerubyのrand関数では乱数が同じ値になって計算がうまくいかなくなるため
 Rubyのrand関数を使用している．
