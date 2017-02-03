@@ -1,8 +1,5 @@
 \contentsline {section}{\numberline {1}概要}{4}
 \contentsline {section}{\numberline {2}序論}{5}
-\contentsline {subsection}{\numberline {2.1}Mapleとは}{5}
-\contentsline {subsection}{\numberline {2.2}Rubyとは}{5}
-\contentsline {subsubsection}{\numberline {2.2.1}RubyとPython}{5}
 \contentsline {section}{\numberline {3}手法}{6}
 \contentsline {subsection}{\numberline {3.1}Mapleとの通信手法}{6}
 \contentsline {subsection}{\numberline {3.2}Maple関数の類型化}{6}
