@@ -1,8 +1,8 @@
 !第四章 実装
 !!maplerubyの基本動作
 入力された値の次の素数を出力するnextprimeを用いて説明する．
+!!!caption:図3-1 maplerubyの基本動作
 {{attach_view(mapleruby_eringi.003.png,mapleruby_eringi)}}
-図3-1 maplerubyの基本動作
 
 #maplerubyをrequireした上で使いたい関数を使う．
 RMaple.new.hogehogeのhogehogeに使いたい関数名を入れる．今回はnextprime
@@ -35,9 +35,8 @@ exec_iは，execでmapleに式を送った後mapleから受け取った値をto_
 ，それがresult.txtを通してRubyに出力されるからだ．
 例えば，行列を生成する関数matrixは以下の図3-2のように解を出力する．
 
+!!!caption:図3-2 MapleCUI版での行列の表示
 {{attach_view(mapleruby_eringi.004.png,mapleruby_eringi)}}
-
-図3-2 MapleCUI版での行列の表示
 
 この空白部分には半角スペースや改行が入っている上，余分な括弧が付いている．この関数を使う際に行列を生成して出力するだけなら問題ないが
 計算に使う場合Rubyの方で都合の良い出力型に変える必要がある．そのためのwrapperを考える必要がある．
@@ -48,9 +47,8 @@ exec_iは，execでmapleに式を送った後mapleから受け取った値をto_
 行列生成した後理想の型で値を得るためには，いらない記号や空白を取り除き要素をint型にする必要があった．
 図3-3はmatrixを実装した後，exec_m(b)というwrapperを作ってみた際に生まれた失敗である．
 
+!!!caption:図3-3 exec_m(b)を実装した際の失敗例
 {{attach_view(mapleruby_eringi.005.png,mapleruby_eringi)}}
-
-図3-3 exec_m(b)を実装した際の失敗例
 
 bには生成した行列の列の数が入る．実装する際に初めに考えたのが図3-3の左側のプログラムである．
 まずRubyのsplitメソッドを使って1文字ずつに分け，分けた要素全てをint型に変換する．空白はint型に変えた際0になるため，0になった空白部分をdelete_ifメソッドを用いて
@@ -62,18 +60,16 @@ delete_ifメソッドで" "(空白)，"\n"，"["，"]"を順番に削除した�
 こうしたことによって，要素に0が含まれていてもきちんと出力されるようにはなったが，桁数の問題が残っている．
 そして，以下の図3-4ように実装することで期待通りに出力を得られるようになった．
 
+!!!caption:図3-4 exec_m(b)の完成形
 {{attach_view(mapleruby_eringi.006.png,mapleruby_eringi)}}
-
-図3-4 exec_m(b)の完成形
 
 完成形では，まずgsubメソッドで数字以外の記号を空白に置き換え，splitメソッドで空白を指定することで空白を区切りとした配列にした後
 int型に直す．直した配列はその後，先ほどと同様にeach_sliceメソッドを用いてlistlist構造になるようにしている．
 !!動的メソッドを用いての実装
 一通り実装した後，次に動的メソッドを用いて実装することにより重複コードを減らすように試みたバージョン2を作成した．
 
+!!!caption:図3-5 左が初期バージョン，右がバージョン2
 {{attach_view(mapleruby_eringi.007.png,mapleruby_eringi)}}
-
-図3-5 左が初期バージョン，右がバージョン2
 
 初期バージョンでは，関数ごとに各引数を好ましい型に変換した後Maplerubyクラスに遷移していた.
 バージョン2では，各数学関数はMapleでの関数名と引数のみになり，新たに作ったmain_i関数にそれらを
@@ -81,8 +77,7 @@ int型に直す．直した配列はその後，先ほどと同様にeach_slice�
 関数によって入力されている引数の個数が違うためである．例えばmain_i関数は出力がint型である関数に対して使っており，
 図3-6のように実装した関数の重複部分や出力に応じて分類して，それぞれ関数を追加している．
 
+!!!caption:図3-6 関数の分類
 {{attach_view(mapleruby_eringi.008.png,mapleruby_eringi)}}
-
-図3-6 関数の分類
 
 matrixは他にexec_m(b)を使う関数がないため，importmatrixは他と重複するコードがないため例外としている．

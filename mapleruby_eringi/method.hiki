@@ -10,13 +10,12 @@ Rubyで外部コマンドを実行するgem libraryのsystemuを使って�
 受けとることで出力を得る．
 !!Maple関数の類型化
 今回，数多く存在するMapleの数学関数の中から整数論と行列に関するものを選抜し実装した．
+
+!!!caption:図2-1 実装した整数論に関する関数の役割と入出力
 {{attach_view(mapleruby_eringi.001.png,mapleruby_eringi)}}
 
-図2-1 実装した整数論に関する関数の役割と入出力
-
+!!!caption:図2-2 実装した行列に関する関数の役割と入出力
 {{attach_view(mapleruby_eringi.002.png,mapleruby_eringi)}}
-
-図2-2 実装した行列に関する関数の役割と入出力
 
 !!出力の切り替え
 Mapleから受け取ったままの出力は，値の前にスペースがたくさん入っていることや，
