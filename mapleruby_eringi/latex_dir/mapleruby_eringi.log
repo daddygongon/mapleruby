@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.9.10)  3 FEB 2017 15:34
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.9.10)  3 FEB 2017 16:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -167,17 +167,17 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 5.76599pt on input line 45.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 46.
+(Font)              scaled to size 9.60999pt on input line 47.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 46.
+(Font)              scaled to size 9.60999pt on input line 47.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 46.
+(Font)              scaled to size 13.83836pt on input line 47.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 46.
+(Font)              scaled to size 13.83836pt on input line 47.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 46.
+(Font)              scaled to size 13.83836pt on input line 47.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 46.
+(Font)              scaled to size 13.83836pt on input line 47.
  (./mapleruby_eringi.toc [1
 
 ]
@@ -189,14 +189,15 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 3.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 4.805pt on input line 3.
-)
+ [2])
 \tf@toc=\write3
 \openout3 = `mapleruby_eringi.toc'.
 
- [2]
+ [3]
 \openout2 = `abst.aux'.
 
- (./abst.tex) [3
+
+(./abst.tex) [4
 
 ]
 \openout2 = `introduction.aux'.
@@ -206,7 +207,7 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 11.53198pt on input line 2.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 11.53198pt on input line 2.
-) [4
+) [5
 
 
 ]
@@ -222,131 +223,131 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 17.
 File: ../figs/./mapleruby_eringi.002.png Graphic file (type eps)
  <../figs/./mapleruby_eringi.002.png>
-[5
+[6
 
 
-]) [6]
+]) [7]
 \openout2 = `mounting.aux'.
 
  (./mounting.tex
 File: ../figs/./mapleruby_eringi.003.png Graphic file (type eps)
- <../figs/./mapleruby_eringi.003.png> [7
+ <../figs/./mapleruby_eringi.003.png> [8
 
 
 ]
 File: ../figs/./mapleruby_eringi.004.png Graphic file (type eps)
 
-<../figs/./mapleruby_eringi.004.png> [8]
+<../figs/./mapleruby_eringi.004.png> [9]
 File: ../figs/./mapleruby_eringi.005.png Graphic file (type eps)
  <../figs/./mapleruby_eringi.005.png>
-[9]
+[10]
 File: ../figs/./mapleruby_eringi.006.png Graphic file (type eps)
  <../figs/./mapleruby_eringi.006.png>
 File: ../figs/./mapleruby_eringi.007.png Graphic file (type eps)
  <../figs/./mapleruby_eringi.007.png>
-[10]
+[11] [12]
 File: ../figs/./mapleruby_eringi.008.png Graphic file (type eps)
- <../figs/./mapleruby_eringi.008.png>) [11] [12]
+ <../figs/./mapleruby_eringi.008.png>) [13]
 \openout2 = `result.aux'.
 
- (./result.tex [13
+ (./result.tex [14
 
 
 ]
-[14]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 71.
+[15]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 72.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 71.
- [15]
-[16]
-Overfull \hbox (77.86208pt too wide) in paragraph at lines 184--184
- [] \OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Version
-s/Current/bin/maple"}[] 
- []
-
-
-Overfull \hbox (77.86208pt too wide) in paragraph at lines 184--184
- [] \OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Version
-s/Current/bin/maple"}[] 
- []
-
-
-Overfull \hbox (77.86208pt too wide) in paragraph at lines 184--184
- [] \OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Version
-s/Current/bin/maple"}[] 
- []
-
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 72.
+ [16]
 [17]
-Overfull \hbox (77.86208pt too wide) in paragraph at lines 184--184
- [] \OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Version
-s/Current/bin/maple"}[] 
+Overfull \hbox (72.61212pt too wide) in paragraph at lines 186--186
+ []\OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions
+/Current/bin/maple"}[] 
  []
 
 
-Overfull \hbox (77.86208pt too wide) in paragraph at lines 184--184
- [] \OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Version
-s/Current/bin/maple"}[] 
+Overfull \hbox (72.61212pt too wide) in paragraph at lines 186--186
+ []\OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions
+/Current/bin/maple"}[] 
  []
 
 
-Overfull \hbox (77.86208pt too wide) in paragraph at lines 184--184
- [] \OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Version
-s/Current/bin/maple"}[] 
+Overfull \hbox (72.61212pt too wide) in paragraph at lines 186--186
+ []\OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions
+/Current/bin/maple"}[] 
+ []
+
+[18]
+Overfull \hbox (72.61212pt too wide) in paragraph at lines 186--186
+ []\OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions
+/Current/bin/maple"}[] 
  []
 
 
-Overfull \hbox (77.86208pt too wide) in paragraph at lines 184--184
- [] \OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Version
-s/Current/bin/maple"}[] 
+Overfull \hbox (72.61212pt too wide) in paragraph at lines 186--186
+ []\OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions
+/Current/bin/maple"}[] 
  []
 
 
-Overfull \hbox (77.86208pt too wide) in paragraph at lines 184--184
- [] \OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Version
-s/Current/bin/maple"}[] 
+Overfull \hbox (72.61212pt too wide) in paragraph at lines 186--186
+ []\OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions
+/Current/bin/maple"}[] 
  []
 
 
-Overfull \hbox (77.86208pt too wide) in paragraph at lines 184--184
- [] \OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Version
-s/Current/bin/maple"}[] 
+Overfull \hbox (72.61212pt too wide) in paragraph at lines 186--186
+ []\OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions
+/Current/bin/maple"}[] 
  []
 
 
-Overfull \hbox (77.86208pt too wide) in paragraph at lines 184--184
- [] \OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Version
-s/Current/bin/maple"}[] 
+Overfull \hbox (72.61212pt too wide) in paragraph at lines 186--186
+ []\OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions
+/Current/bin/maple"}[] 
  []
 
 
-Overfull \hbox (77.86208pt too wide) in paragraph at lines 184--184
- [] \OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Version
-s/Current/bin/maple"}[] 
+Overfull \hbox (72.61212pt too wide) in paragraph at lines 186--186
+ []\OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions
+/Current/bin/maple"}[] 
  []
 
-) [18]
+
+Overfull \hbox (72.61212pt too wide) in paragraph at lines 186--186
+ []\OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions
+/Current/bin/maple"}[] 
+ []
+
+
+Overfull \hbox (72.61212pt too wide) in paragraph at lines 186--186
+ []\OT1/cmtt/m/n/10 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions
+/Current/bin/maple"}[] 
+ []
+
+) [19]
 \openout2 = `discussion.aux'.
 
  (./discussion.tex
 File: ../figs/./mapleruby_eringi.009.png Graphic file (type eps)
- <../figs/./mapleruby_eringi.009.png> [19
+ <../figs/./mapleruby_eringi.009.png> [20
 
 
-]) [20]
+]) [21]
 \openout2 = `conclusion.aux'.
 
 
-(./conclusion.tex) [21
+(./conclusion.tex) [22
 
 
 ]
 \openout2 = `etc.aux'.
 
  (./etc.tex
-Overfull \hbox (115.8492pt too wide) in paragraph at lines 2--4
+Overfull \hbox (115.8492pt too wide) in paragraph at lines 2--3
 []\OT1/cmr/m/n/10 [1] \JY1/mc/m/n/10 「\OT1/cmr/m/n/10 Maple(\JY1/mc/m/n/10 メ
 イプル\OT1/cmr/m/n/10 ) \JY1/mc/m/n/10 とは 」 \OT1/cmr/m/n/10 , \JY1/mc/m/n/10
  サイバネ ット\OT1/cmr/m/n/10 , \OT1/cmtt/m/n/10 http://www.cybernet.co.jp/mapl
@@ -354,13 +355,13 @@ e/product/maple/about.html,
  []
 
 
-Overfull \hbox (14.43083pt too wide) in paragraph at lines 2--4
-\OT1/cmr/m/n/10 2017/02/01 \JY1/mc/m/n/10 アクセス\OT1/cmr/m/n/10 . [2] \JY1/mc
-/m/n/10 「\OT1/cmr/m/n/10 RSA \JY1/mc/m/n/10 暗号 」 \OT1/cmr/m/n/10 , Wikipedi
-a, \OT1/cmtt/m/n/10 https://ja.wikipedia.org/wiki/RSA
+Underfull \hbox (badness 4819) in paragraph at lines 4--5
+[]\OT1/cmr/m/n/10 [2] \JY1/mc/m/n/10 「\OT1/cmr/m/n/10 RSA \JY1/mc/m/n/10 暗号 
+」 \OT1/cmr/m/n/10 , Wikipedia, \OT1/cmtt/m/n/10 https://ja.wikipedia.org/wiki/
+RSA \JY1/mc/m/n/10 暗号\OT1/cmr/m/n/10 ,
  []
 
-) [22
+) [23
 
 
 ] (./mapleruby_eringi.aux (./abst.aux) (./introduction.aux) (./method.aux) (./m
@@ -379,4 +380,4 @@ Here is how much of TeX's memory you used:
  934 hyphenation exceptions out of 8191
  26i,6n,32p,310b,385s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on mapleruby_eringi.dvi (22 pages, 43868 bytes).
+Output written on mapleruby_eringi.dvi (23 pages, 45608 bytes).

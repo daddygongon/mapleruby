@@ -1,4 +1,4 @@
-!第三章 手法
+!手法
 !!Mapleとの通信手法
 Mapleは一般的に，グラフや数式の綺麗な出力や，数式の入力を
 初心者が直感的におこなえるようにJavaで作られたGUIを使って実行する．
@@ -11,10 +11,10 @@ Rubyで外部コマンドを実行するgem libraryのsystemuを使って�
 !!Maple関数の類型化
 今回，数多く存在するMapleの数学関数の中から整数論と行列に関するものを選抜し実装した．
 
-!!!caption:図2-1 実装した整数論に関する関数の役割と入出力
+!!!caption:実装した整数論に関する関数の役割と入出力
 {{attach_view(mapleruby_eringi.001.png,mapleruby_eringi)}}
 
-!!!caption:図2-2 実装した行列に関する関数の役割と入出力
+!!!caption:実装した行列に関する関数の役割と入出力
 {{attach_view(mapleruby_eringi.002.png,mapleruby_eringi)}}
 
 !!出力の切り替え

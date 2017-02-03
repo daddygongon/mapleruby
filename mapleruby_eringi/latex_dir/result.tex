@@ -1,8 +1,9 @@
-\section{第五章 検証}
+\section{検証}
 \subsection{RSA暗号を用いた検証}
 整数論に関する関数はRSA暗号の計算を用いて，Rubyのみで計算する場合とmaplerubyで計算した場合でどのような差があるか
 検証する．検証のために以下のようなプログラムを用意した．
 \begin{quote}\begin{verbatim}
+#rsa_org.rb
 require 'prime'
 include Math
 
@@ -48,16 +49,16 @@ rsa(ARGV[0])
 \end{verbatim}\end{quote}
 このプログラムはRubyだけで書かれている．例えば平文を256と入力すると，
 \begin{quote}\begin{verbatim}
- /Users/eri/mapleruby/lib% ruby rsa.rb 256
- 平文>>> 256
- 素数 p >>> 107
- 素数 q >>> 83
- N >>> 8881
- L >>> 4346
- 公開鍵>>> E = 3, N = 8881
- 秘密鍵>>> D = 1449, N = 8881
- 暗号化>>> 1007
- 復号化>>> 256
+/Users/eri/mapleruby/lib% ruby rsa.rb 256
+平文>>> 256
+素数 p >>> 107
+素数 q >>> 83
+N >>> 8881
+L >>> 4346
+公開鍵>>> E = 3, N = 8881
+秘密鍵>>> D = 1449, N = 8881
+暗号化>>> 1007
+復号化>>> 256
 \end{verbatim}\end{quote}
 このような形で，出力してくれる．
 
@@ -86,25 +87,26 @@ RSA暗号は桁数が大きい合成数の素因数分解問題が困難であ�
 \end{verbatim}\end{quote}
 を行う．
 
-\subsection{Rubyのみで計算した場合}
+\subsubsection{Rubyのみで計算した場合}
 Rubyのみで計算した場合，このプログラムでは，平文が1000000を越えたあたりから正しく出力ができなかったり
 数が大きすぎて計算ができないということが起こる．下記は平文が2000000だった場合の結果である．
 \begin{quote}\begin{verbatim}
- /Users/eri/mapleruby/lib% ruby rsa_org.rb 2000000
- 平文>>> 2000000
- 素数 p >>> 1459
- 素数 q >>> 1493
- N >>> 2178287
- L >>> 1087668
- 公開鍵>>> E = 5, N = 2178287
- 秘密鍵>>> D = 652601, N = 2178287
- rsa_org.rb:36: warning: in a**b, b may be too big
- 暗号化>>> 1481122
- 復号化>>> NaN
+/Users/eri/mapleruby/lib% ruby rsa_org.rb 2000000
+平文>>> 2000000
+素数 p >>> 1459
+素数 q >>> 1493
+N >>> 2178287
+L >>> 1087668
+公開鍵>>> E = 5, N = 2178287
+秘密鍵>>> D = 652601, N = 2178287
+rsa_org.rb:36: warning: in a**b, b may be too big
+暗号化>>> 1481122
+復号化>>> NaN
 \end{verbatim}\end{quote}
-\subsection{maplerubyを使った場合}
+\subsubsection{maplerubyを使った場合}
 まず先ほどのrsa\_org.rbをmaplerubyを用いたrsa.rbに書き換えた．
 \begin{quote}\begin{verbatim}
+#rsa.rb
 require './mapleruby'
 include Math
 
@@ -152,36 +154,36 @@ rsa(ARGV[0])
 Rubyのrand関数を使用している．
 rsa.rbを使った場合は，1000000000までの暗号化が可能であると分かった．
 \begin{quote}\begin{verbatim}
- /Users/eri/mapleruby/lib% ruby rsa.rb 1000000000
- 平文>>> 1000000000
- {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
- 31699
- {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
- 31657
- {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
- 167238648
- 素数 p >>> 31699
- 素数 q >>> 31657
- N >>> 1003495243
- L >>> 167238648
- {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
- 2
- {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
- 3
- {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
- 4
- {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
- 1
- 公開鍵>>> E = 5, N = 1003495243
- {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
- 秘密鍵>>> D = 100343189, N = 1003495243
- {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
- {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
- 96903649
- {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
- 暗号化>>> 96903649
- 復号化>>> 1000000000
-\end{verbatim}\end{quote}
-MAPLE\_PATHの文章のところでmaplerubyが動いている．
-
+/Users/eri/mapleruby/lib% ruby rsa.rb 1000000000
+平文>>> 1000000000
+{:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
+31699
+{:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
+31657
+{:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
+167238648
+素数 p >>> 31699
+素数 q >>> 31657
+N >>> 1003495243
+L >>> 167238648
+{:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
+2
+{:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
+3
+{:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
+4
+{:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
+1
+公開鍵>>> E = 5, N = 1003495243
+{:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
+秘密鍵>>> D = 100343189, N = 1003495243
+{:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
+{:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
+96903649
+{:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
+暗号化>>> 96903649
+復号化>>> 1000000000
+\end{verbatim}\end{quote}\begin{description}
+\item[MAPLE\_PATHの文章のところでmaplerubyが動いている．
+]\end{description}
 \subsection{行列での検証}
