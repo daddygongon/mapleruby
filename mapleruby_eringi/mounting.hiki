@@ -4,24 +4,12 @@
 !!!caption:図3-1 maplerubyの基本動作
 {{attach_view(mapleruby_eringi.003.png,mapleruby_eringi)}}
 
-#maplerubyをrequireした上で使いたい関数を使う．
-RMaple.new.hogehogeのhogehogeに使いたい関数名を入れる．今回はnextprime
-で説明を進める．
-
-#RMapleクラス内のnextprime関数が呼び出され，aに3が入る．この時nextprimeは入力された
-値がint型になるように関数内でto_iしてある．その後，Maplerubyクラスのexec_i関数へ
-"nextprime(3)"が出力される．この出力された文字列がそのままMapleでの計算に使われる．
-
+#maplerubyをrequireした上で使いたい関数を使う．RMaple.new.hogehogeのhogehogeに使いたい関数名を入れる．今回はnextprimeで説明を進める．
+#RMapleクラス内のnextprime関数が呼び出され，aに3が入る．この時nextprimeは入力された値がint型になるように関数内でto_iしてある．その後，Maplerubyクラスのexec_i関数へ"nextprime(3)"が出力される．この出力された文字列がそのままMapleでの計算に使われる．
 #出力された文字列をさらにexec関数へ出力する．
-
-#青四角内の内容をMapleへと出力する．この時#{@maple_code};となっている部分に先ほどの
-"nextprime(3)"が入る．青四角の内容がMapleに出力され実行されることで得られた答えが
-result.txtに出力されるようになっている．
-
+#青四角内の内容をMapleへと出力する．この時\verb|#{@maple_code};|となっている部分に先ほどの"nextprime(3)"が入る．青四角の内容がMapleに出力され実行されることで得られた答えがresult.txtに出力されるようになっている．
 #result.txtに出力された内容をRuby側で受け取り，exec_iに再び返す．
-
 #返された値をto_iすることでint型に直して解を出力する．
-
 
 !!出力の切り替えの実装例
 先ほどと同様にnextprimeを例に挙げると
@@ -56,7 +44,7 @@ bには生成した行列の列の数が入る．実装する際に初めに考�
 しかし，listlist構造への変換はできていたが途中delete_ifメソッドにより0を消してしまったため，行列の要素で0が含まれていた場合に
 行列の要素まで消えてしまった．しかも，1文字ずつ分けているため2桁以上の桁数を持つ要素はばらばらになってしまった．
 そのことを踏まえて，右側のプログラムを作成した．今度は1文字ずつ分けるところまでは先ほどと一緒で，空白を丸ごと消そうとするのではなく
-delete_ifメソッドで" "(空白)，"\n"，"["，"]"を順番に削除した後にto_iし，先ほどと同じようにeach_sliceメソッドでlistlist構造になるようにした．
+delete_ifメソッドで" "(空白)，\verb|"\n"|，"["，"]"を順番に削除した後にto_iし，先ほどと同じようにeach_sliceメソッドでlistlist構造になるようにした．
 こうしたことによって，要素に0が含まれていてもきちんと出力されるようにはなったが，桁数の問題が残っている．
 そして，以下の図3-4ように実装することで期待通りに出力を得られるようになった．
 
