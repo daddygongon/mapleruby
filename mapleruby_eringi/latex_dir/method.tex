@@ -13,6 +13,8 @@ Mapleは一般的に，グラフや数式の綺麗な出力や，数式の入
 \includegraphics[width=6cm,bb=0 0 442 500]{../figs/./mapleruby_eringi.002.png}
 \caption{実装した行列に関する関数の役割と入出力}
 \label{default}\end{center}\end{figure}
+\newpage
+
 \subsection{出力の切り替え}
 Mapleから受け取ったままの出力は，値の前にスペースがたくさん入っていることや，出力が String 型であることから，その数値を使って計算をするようにプログラミングしていた場合に支障をきたす．このため，関数ごとに正しい型で出力できるようにwrapperを作る．
 例えば，int 型で出力が欲しいものはexecをexec\_iから呼び出すことで対応する．このようにbooleanやfloatといった出力型に応じて，exec\_b，exec\_fのように関数を増やしていく．

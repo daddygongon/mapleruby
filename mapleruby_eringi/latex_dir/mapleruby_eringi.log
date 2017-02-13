@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.9.10)  13 FEB 2017 12:17
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.9.10)  13 FEB 2017 18:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -103,41 +103,7 @@ File: listings.cfg 2014/09/06 1.5e listings configuration
 ))
 Package: listings 2014/09/06 1.5e (Carsten Heinz)
 
-(./mapleruby_eringi.aux (./abst.aux) (./introduction.aux) (./method.aux
-
-LaTeX Warning: Label `default' multiply defined.
-
-) (./mounting.aux
-
-LaTeX Warning: Label `default' multiply defined.
-
-
-LaTeX Warning: Label `default' multiply defined.
-
-
-LaTeX Warning: Label `default' multiply defined.
-
-
-LaTeX Warning: Label `default' multiply defined.
-
-
-LaTeX Warning: Label `default' multiply defined.
-
-
-LaTeX Warning: Label `default' multiply defined.
-
-) (./result.aux
-
-LaTeX Warning: Label `default' multiply defined.
-
-
-LaTeX Warning: Label `default' multiply defined.
-
-) (./discussion.aux
-
-LaTeX Warning: Label `default' multiply defined.
-
-) (./conclusion.aux) (./etc.aux))
+(./mapleruby_eringi.aux)
 \openout1 = `mapleruby_eringi.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
@@ -185,22 +151,13 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 47.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 47.
- (./mapleruby_eringi.toc [1
-
-]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 4.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 4.
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 4.
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 4.805pt on input line 4.
-)
+ (./mapleruby_eringi.toc)
 \tf@toc=\write3
 \openout3 = `mapleruby_eringi.toc'.
 
- [2]
+ [1
+
+] [2]
 \openout2 = `abst.aux'.
 
  (./abst.tex) [3
@@ -208,7 +165,8 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 ]
 \openout2 = `introduction.aux'.
 
- (./introduction.tex) [4
+
+(./introduction.tex) [4
 
 
 ]
@@ -220,15 +178,14 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 11.53198pt on input line 2.
 File: ../figs/./mapleruby_eringi.001.png Graphic file (type eps)
-
-<../figs/./mapleruby_eringi.001.png>
+ <../figs/./mapleruby_eringi.001.png>
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 10.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 10.
 File: ../figs/./mapleruby_eringi.002.png Graphic file (type eps)
- <../figs/./mapleruby_eringi.002.png>
-[5
+
+<../figs/./mapleruby_eringi.002.png> [5
 
 
 ]) [6]
@@ -236,7 +193,8 @@ File: ../figs/./mapleruby_eringi.002.png Graphic file (type eps)
 
  (./mounting.tex
 File: ../figs/./mapleruby_eringi.003.png Graphic file (type eps)
- <../figs/./mapleruby_eringi.003.png> [7
+
+<../figs/./mapleruby_eringi.003.png> [7
 
 
 ]
@@ -268,6 +226,8 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 4.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 5.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 5.
 LaTeX Font Info:    Font shape `JT1/gt/m/it' in size <9> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 5.
@@ -351,16 +311,16 @@ Underfull \hbox (badness 5578) in paragraph at lines 4--5
 ounting.aux) (./result.aux) (./discussion.aux) (./conclusion.aux)
 (./etc.aux))
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 2505 strings out of 493777
- 34622 string characters out of 6151334
- 215305 words of memory out of 5000000
- 5938 multiletter control sequences out of 15000+600000
- 15681 words of font info for 72 fonts, out of 8000000 for 9000
+ 2479 strings out of 493777
+ 34313 string characters out of 6151334
+ 213103 words of memory out of 5000000
+ 5928 multiletter control sequences out of 15000+600000
+ 15589 words of font info for 71 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  34i,6n,51p,755b,1739s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on mapleruby_eringi.dvi (23 pages, 68544 bytes).
+Output written on mapleruby_eringi.dvi (23 pages, 63152 bytes).
