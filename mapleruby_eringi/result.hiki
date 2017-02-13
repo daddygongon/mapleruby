@@ -1,8 +1,7 @@
 !検証
 !!RSA暗号を用いた検証
-整数論に関する関数はRSA暗号の計算を用いて，Rubyのみで計算する場合とmaplerubyで計算した場合でどのような差があるか
-検証する．検証のために以下のようなプログラムを用意した．
-<<<
+整数論に関する関数はRSA暗号の計算を用いて，Rubyのみで計算する場合とmaplerubyで計算した場合でどのような差があるか検証する．検証のために以下のようなプログラムを用意した．
+<<< ruby
 #rsa_org.rb
 require 'prime'
 include Math
@@ -49,7 +48,7 @@ rsa(ARGV[0])
 >>>
 
 このプログラムはRubyだけで書かれている．例えば平文を256と入力すると，
-<<<
+<<< zsh
 /Users/eri/mapleruby/lib% ruby rsa.rb 256
 平文>>> 256
 素数 p >>> 107
@@ -65,7 +64,7 @@ L >>> 4346
 !!!RSA暗号とは
 RSA暗号は桁数が大きい合成数の素因数分解問題が困難であることを安全性の根拠とした公開鍵暗号の1つである．
 1977年に発明され，発明者であるロナルド・リベスト(Ron Rivest)，アディ・シャミア(Adi Shamir)，
-レオナルド・エーデルマン(Len Adleman)ら3人のFamily nameの頭文字をつなげてこのように呼ばれている[2].
+レオナルド・エーデルマン(Len Adleman)ら3人のFamily nameの頭文字をつなげてこのように呼ばれている{{cite(listings2)}}.
 アルゴリズムは，
 *p, q: 任意の素数．
 *N: p, qをかけた数．
@@ -80,9 +79,8 @@ RSA暗号は桁数が大きい合成数の素因数分解問題が困難であ�
   暗号文^D mod N (暗号文をD乗してNで割った余り)
 を行う．
 !!!Rubyのみで計算した場合
-Rubyのみで計算した場合，このプログラムでは，平文が1000000を越えたあたりから正しく出力ができなかったり
-数が大きすぎて計算ができないということが起こる．下記は平文が2000000だった場合の結果である．
-<<<
+Rubyのみで計算した場合，このプログラムでは，平文が1000000を越えたあたりから正しく出力ができなかったり数が大きすぎて計算ができないということが起こる．下記は平文が2000000だった場合の結果である．
+<<< zch
 /Users/eri/mapleruby/lib% ruby rsa_org.rb 2000000
 平文>>> 2000000
 素数 p >>> 1459
@@ -97,7 +95,7 @@ rsa_org.rb:36: warning: in a**b, b may be too big
 >>>
 !!!maplerubyを使った場合
 まず先ほどのrsa_org.rbをmaplerubyを用いたrsa.rbに書き換えた．
-<<<
+<<< ruby
 #rsa.rb
 require './mapleruby'
 include Math
@@ -143,10 +141,9 @@ end
 rsa(ARGV[0])
 >>>
 
-このプログラムに関しては，maplerubyのrand関数では乱数が同じ値になって計算がうまくいかなくなるため
-Rubyのrand関数を使用している．
+このプログラムに関しては，maplerubyのrand関数では乱数が同じ値になって計算がうまくいかなくなるためRubyのrand関数を使用している．
 rsa.rbを使った場合は，1000000000までの暗号化が可能であると分かった．
-<<<
+<<< zsh
 /Users/eri/mapleruby/lib% ruby rsa.rb 1000000000
 平文>>> 1000000000
 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
@@ -179,3 +176,27 @@ L >>> 167238648
 >>>
 :MAPLE_PATHの文章のところでmaplerubyが動いている．
 !!行列での検証
+まず，以下のようなプログラムを作った．
+<<< ruby
+require './mapleruby'
+
+a = 3
+b = 3
+c = [[1,2,1],[4,5,6],[7,8,9]]
+
+p x = RMaple.new.matrix(a, b, c)
+
+p RMaple.new.matrixinverse(x)
+p RMaple.new.eigenvectors(x)
+>>>
+これは3行3列の行列を生成したのち，それの逆行列と固有値・固有ベクトルを出力するプログラムである．これを実行すると図9のようになる．
+
+!!!caption:プログラムの出力結果
+{{attach_view(mapleruby_eringi.008.png,mapleruby_eringi)}}
+
+これと同じものをMapleで計算すると図10のようになる．
+
+!!!caption:Mapleの出力結果
+{{attach_view(mapleruby_eringi.exmaple.png,mapleruby_eringi)}}
+
+よって正しく行列の計算ができた事が分かる．
