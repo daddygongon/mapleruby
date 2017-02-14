@@ -4,15 +4,47 @@ Mapleは一般的に，グラフや数式の綺麗な出力や，数式の入
 
 \subsection{Maple関数の類型化}
 今回，数多く存在するMapleの数学関数の中から整数論と行列に関するものを選抜し実装した．
+実装した整数論に関する関数の役割と入出力を表\ref{table:one}に示した．また，
+行列に関する関数の役割と入出力を表\ref{table:two}に示した．
 
-\begin{figure}[htbp]\begin{center}
-\includegraphics[width=6cm,bb=0 0 442 500]{../figs/./mapleruby_eringi.001.png}
-\caption{実装した整数論に関する関数の役割と入出力}
-\label{default}\end{center}\end{figure}
-\begin{figure}[htbp]\begin{center}
-\includegraphics[width=6cm,bb=0 0 442 500]{../figs/./mapleruby_eringi.002.png}
-\caption{実装した行列に関する関数の役割と入出力}
-\label{default}\end{center}\end{figure}
+\begin{table}[htbp]\begin{center}
+\caption{実装した整数論に関する関数の役割と入出力.}
+\label{table:one}
+\begin{tabular}{lllll}
+\hline
+関数名  &振る舞い  &入力型  &出力型  \\ \hline
+nextprime  &次の素数を求める  &int  &int  \\
+lcm  &最小公倍数  &int, int  &int  \\
+gcd  &最大公約数  &int, int  &int  \\
+rand  &乱数生成  &int  &int  \\
+isprime  &素数判定  &int  &boolean  \\
+ifactor  &素因数分解  &int  &string  \\
+mod  &剰余  &int, int  &int  \\
+\hline
+\end{tabular}
+\label{default}
+\end{center}\end{table}
+%for inserting separate lines, use \hline, \cline{2-3} etc.
+
+\begin{table}[htbp]\begin{center}
+\caption{実装した行列に関する関数の役割と入出力.}
+\label{table:two}
+\begin{tabular}{lllll}
+\hline
+関数名  &振る舞い  &入力型  &出力型  \\ \hline
+importmatrix  &textファイルから  &string, string  &int  \\
+ &行列を読み込む  & \\
+matrix  &行列生成  &int, int, int  &array  \\
+matrixinverse  &逆行列  &array  &string  \\
+determinant  &行列式の解  &array  &float  \\
+trancepose  &転置行列  &array  &string  \\
+eigenvectors  &固有値, 固有ベクトル  &array  &string  \\
+\hline
+\end{tabular}
+\label{default}
+\end{center}\end{table}
+%for inserting separate lines, use \hline, \cline{2-3} etc.
+
 \newpage
 
 \subsection{出力の切り替え}
