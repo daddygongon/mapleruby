@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.9.10)  15 FEB 2017 06:06
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.9.10)  15 FEB 2017 06:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -153,10 +153,10 @@ Overfull \hbox (45.30627pt too wide) in paragraph at lines 54--55
 
 ] (./final_abst.aux) ) 
 Here is how much of TeX's memory you used:
- 763 strings out of 493777
- 8942 string characters out of 6151334
+ 764 strings out of 493777
+ 8951 string characters out of 6151334
  71985 words of memory out of 5000000
- 4300 multiletter control sequences out of 15000+600000
+ 4301 multiletter control sequences out of 15000+600000
  13112 words of font info for 57 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  25i,7n,21p,502b,245s stack positions out of 5000i,500n,10000p,200000b,80000s
