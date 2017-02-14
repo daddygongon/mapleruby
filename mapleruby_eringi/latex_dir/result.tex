@@ -197,18 +197,18 @@ p x = RMaple.new.matrix(a, b, c)
 p RMaple.new.matrixinverse(x)
 p RMaple.new.eigenvectors(x)
 \end{lstlisting}
-これは3行3列の行列を生成したのち，それの逆行列と固有値・固有ベクトルを出力するプログラムである．これを実行すると図7のようになる．
+これは3行3列の行列を生成したのち，それの逆行列と固有値・固有ベクトルを出力するプログラムである．これを実行すると図\ref{figure:six}のようになる．
 
 \begin{figure}[htbp]\begin{center}
-\includegraphics[width=10cm,bb= 0 0 737 553]{../figs/./mapleruby_eringi.008.png}
+\includegraphics[width=12cm,bb= 0 0 937 753]{../figs/./mapleruby_eringi.008.png}
 \caption{プログラムの出力結果.}
+\label{figure:six}
 \label{default}\end{center}\end{figure}
 \newpage
-これと同じものをMapleで計算すると図8のようになる．
+これと同じものをMapleで計算すると図\ref{figure:seven}のようになり，よって正しく行列の計算ができた事が分かる．
 
 \begin{figure}[htbp]\begin{center}
-\includegraphics[width=10cm,bb= 0 0 737 553]{../figs/./mapleruby_eringi.exmaple.png}
+\includegraphics[width=12cm,bb= 0 0 937 753]{../figs/./mapleruby_eringi.exmaple.png}
 \caption{Mapleの出力結果.}
+\label{figure:seven}
 \label{default}\end{center}\end{figure}
-よって正しく行列の計算ができた事が分かる．
-

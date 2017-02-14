@@ -42,7 +42,7 @@ end
 
 desc "transfer hikis/*.hiki to latex"
 task :latex do
-  target = 'final_abst'
+  target = 'abst'
   command = "hiki2latex --pre latexes/handout_pre.tex hikis/#{target}.hiki > latexes/#{target}.tex"
   system command
   command = "open latexes/#{target}.tex"

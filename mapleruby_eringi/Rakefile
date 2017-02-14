@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+# -*- coding: utf-8 -*-
 require 'systemu'
 require 'tempfile'
 require 'colorize'
@@ -186,7 +188,10 @@ end
 
 def check_bounding_box
 #  $bounding_box="0 0 442 432"
-  $bounding_box=" 0 0 737 553"
+#  $bounding_box=" 0 0 737 553"
+#  $fig_width="10"
+  $bounding_box=" 0 0 937 753"
+  $fig_width="12"
 end
 
 desc "すべてのhikiファイルをlatex変換"
@@ -206,7 +211,7 @@ task :latex_all do
         line = ''
       end
     end
-    line ="\\usepackage{listings,jlisting}" if line.match(/\\usepackage{listings}/)
+    line ="\\usepackage{url}\n\\usepackage{listings,jlisting}\n" if line.match(/\\usepackage{listings}/)
     if line.match(/section{(.+)}/)
       if m=line.match(/\\verb\|(.+)\((.+)\)\|/)
         p m
@@ -273,10 +278,12 @@ def convert_to_latex(file_name, options={})
       line = "\\end{thebibliography}\n"
     end
     if m=line.match(/\\item\[(.+)\](.+)/) and in_bib==true
-      line ="\\bibitem{#{m[1]}} #{m[2]}"
+      tmp = m[2].gsub!(/\\verb\|(.*?)\|/){ "\\url{#{$1}}" } || m[2]
+      line ="\\bibitem{#{m[1]}} #{tmp}"
+      puts line.blue
     end
     if m=line.match(/\\includegraphics\[width=6cm\]\{(.+)\}/)
-      p line="\\includegraphics\[width=10cm,bb=#{$bounding_box}\]\{../figs/#{m[1]}\}\n"
+      p line="\\includegraphics\[width=#{$fig_width}cm,bb=#{$bounding_box}\]\{../figs/#{m[1]}\}\n"
       cont << line
     else
       cont << line
