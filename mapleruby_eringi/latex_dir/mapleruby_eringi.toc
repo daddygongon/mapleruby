@@ -3,8 +3,6 @@
 \contentsline {section}{\numberline {3}手法}{5}
 \contentsline {subsection}{\numberline {3.1}Mapleとの通信手法}{5}
 \contentsline {subsection}{\numberline {3.2}Maple関数の類型化}{5}
-\contentsline {subsubsection}{\numberline {3.2.1}caption:(table:one)実装した整数論に関する関数の役割と入出力.}{5}
-\contentsline {subsubsection}{\numberline {3.2.2}caption:(table:two)実装した行列に関する関数の役割と入出力.}{5}
 \contentsline {subsection}{\numberline {3.3}出力の切り替え}{6}
 \contentsline {section}{\numberline {4}実装}{7}
 \contentsline {subsection}{\numberline {4.1}maplerubyの基本動作}{7}
@@ -15,7 +13,7 @@
 \contentsline {subsubsection}{\numberline {5.1.1}RSA暗号とは}{14}
 \contentsline {subsubsection}{\numberline {5.1.2}Rubyのみで計算した場合}{15}
 \contentsline {subsubsection}{\numberline {5.1.3}maplerubyを使った場合}{15}
-\contentsline {subsection}{\numberline {5.2}行列での検証}{18}
+\contentsline {subsection}{\numberline {5.2}行列での検証}{17}
 \contentsline {section}{\numberline {6}考察}{20}
 \contentsline {subsection}{\numberline {6.1}初期バージョンとバージョン2の比較}{20}
 \contentsline {subsection}{\numberline {6.2}maplerubyを使うメリット，デメリット}{21}

@@ -1,7 +1,7 @@
 \section{検証}
 \subsection{RSA暗号を用いた検証}
 整数論に関する関数はRSA暗号の計算を用いて，Rubyのみで計算する場合とmaplerubyで計算した場合でどのような差があるか検証する．検証のために以下のようなプログラムを用意した．
-\begin{lstlisting}[style=customRuby]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 #rsa_org.rb
 require 'prime'
 include Math
@@ -47,7 +47,7 @@ end
 rsa(ARGV[0])
 \end{lstlisting}
 このプログラムはRubyだけで書かれている．例えば平文を256と入力すると，
-\begin{lstlisting}[style=]
+\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
 /Users/eri/mapleruby/lib% ruby rsa.rb 256
 平文>>> 256
 素数 p >>> 107
@@ -88,7 +88,7 @@ RSA暗号は桁数が大きい合成数の素因数分解問題が困難であ�
 
 \subsubsection{Rubyのみで計算した場合}
 Rubyのみで計算した場合，このプログラムでは，平文が1000000を越えたあたりから正しく出力ができなかったり数が大きすぎて計算ができないということが起こる．下記は平文が2000000だった場合の結果である．
-\begin{lstlisting}[style=]
+\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
 /Users/eri/mapleruby/lib% ruby rsa_org.rb 2000000
 平文>>> 2000000
 素数 p >>> 1459
@@ -103,7 +103,7 @@ rsa_org.rb:36: warning: in a**b, b may be too big
 \end{lstlisting}
 \subsubsection{maplerubyを使った場合}
 まず先ほどのrsa\_org.rbをmaplerubyを用いたrsa.rbに書き換えた．
-\begin{lstlisting}[style=customRuby]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 #rsa.rb
 require './mapleruby'
 include Math
@@ -150,7 +150,7 @@ rsa(ARGV[0])
 \end{lstlisting}
 このプログラムに関しては，maplerubyのrand関数では乱数が同じ値になって計算がうまくいかなくなるためRubyのrand関数を使用している．
 rsa.rbを使った場合は，1000000000までの暗号化が可能であると分かった．
-\begin{lstlisting}[style=]
+\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
 /Users/eri/mapleruby/lib% ruby rsa.rb 1000000000
 平文>>> 1000000000
 {:MAPLE_PATH=>"/Library/Frameworks/Maple.framework/Versions/Current/bin/maple"}
@@ -185,7 +185,7 @@ L >>> 167238648
 ]\end{description}
 \subsection{行列での検証}
 まず，以下のようなプログラムを作った．
-\begin{lstlisting}[style=customRuby]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 require './mapleruby'
 
 a = 3
