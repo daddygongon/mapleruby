@@ -3,12 +3,28 @@
 Mapleは一般的に，グラフや数式の綺麗な出力や，数式の入力を初心者が直感的におこなえるようにJavaで作られたGUIを使って実行する．それとは別にcommand lineで実行される計算エンジン部が用意されている．そこで,開発するRubyライブラリでは，このエンジンに直接働きかけて操作する．Rubyで外部コマンドを実行するgem libraryのsystemuを使って，出力を得るようにしている．Ruby codeで要求コードを受け取った場合，そのコードをtmp.mwに書き込む．それをMapleで実行し，結果をテキストファイルで受けとることで出力を得る．
 !!Maple関数の類型化
 今回，数多く存在するMapleの数学関数の中から整数論と行列に関するものを選抜し実装した．
+実装した整数論に関する関数の役割と入出力を表{{ref(table:one)}}に示した．また，
+行列に関する関数の役割と入出力を表{{ref(table:two)}}に示した．
 
-!!!caption:実装した整数論に関する関数の役割と入出力
-{{attach_view(mapleruby_eringi.001.png,mapleruby_eringi)}}
+!!!caption:(table:one)実装した整数論に関する関数の役割と入出力.
+||関数名||振る舞い||入力型||出力型
+||nextprime||次の素数を求める||int||int
+||lcm||最小公倍数||int, int||int
+||gcd||最大公約数||int, int||int
+||rand||乱数生成||int||int
+||isprime||素数判定||int||boolean
+||ifactor||素因数分解||int||string
+||mod||剰余||int, int||int
 
-!!!caption:実装した行列に関する関数の役割と入出力
-{{attach_view(mapleruby_eringi.002.png,mapleruby_eringi)}}
+!!!caption:(table:two)実装した行列に関する関数の役割と入出力.
+||関数名||振る舞い||入力型||出力型
+||^importmatrix||textファイルから||^string, string||int
+||行列を読み込む
+||matrix||行列生成||int, int, int||array
+||matrixinverse||逆行列||array||string
+||determinant||行列式の解||array||float
+||trancepose||転置行列||array||string
+||eigenvectors||固有値, 固有ベクトル||array||string
 
 \newpage
 !!出力の切り替え
