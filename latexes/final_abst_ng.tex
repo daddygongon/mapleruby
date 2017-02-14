@@ -30,10 +30,11 @@ Mapleは一般的に，グラフや数式の綺麗な出力や，数式の入力
 
 \section{基本動作}
 入力された値の次の素数を出力するnextprimeを用いて説明する．
-\begin{wrapfigure}[11]{r}[1cm]{6cm}\begin{center}
+\begin{wrapfigure}{r}{4cm}\begin{center}
 \includegraphics[width=6cm, bb=0 0  937 753]{./mapleruby_eringi.003.png}
 \caption{(figure:one)maplerubyの基本動作.}
 \label{default}\end{center}\end{wrapfigure}
+
 \begin{enumerate}
 \item maplerubyをrequireした上で使いたい関数を使う．RMaple.new.hogehogeのhogehogeに使いたい関数名を入れる．今回はnextprimeで説明を進める．
 \item RMapleクラス内のnextprime関数が呼び出され，aに3が入る．この時nextprimeは入力された値がint型になるように関数内でto\_iしてある．その後，Maplerubyクラスのexec\_i関数へ"nextprime(3)"が出力される．この出力された文字列がそのままMapleでの計算に使われる．
