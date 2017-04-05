@@ -1,3 +1,0 @@
-on line 4 of "tmp.mw", syntax error, `;` unexpected:
-writeto(terminal);
-                 ^

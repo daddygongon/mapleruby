@@ -1,5 +1,0 @@
-interface(quiet=true);
-writeto("./result.txt");
-lcm(#{a},#{b});
-writeto(terminal);
-interface(quiet=false);
